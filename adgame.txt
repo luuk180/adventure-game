@@ -1,0 +1,52 @@
+Jist of it, member of adventurer guild tasked to go into the mountain and retrieve artifact for the local duke
+Locations:
+1.	Cave
+2.	Summit temple
+3.	Town square
+4.	Hold of the duke
+5.	Base of mountain
+6.	Path on mountain
+7.	Abandoned hold (underground)
+8.	Lake
+9.	Underground river
+10.	Ruined rope bridge
+11.	Smithy
+12. 	Bridge to the hold
+13.	Book keeps study
+
+Items:
+1.	Artifact
+2.	Melee weapons
+3.	Explosives
+4.	Bucket
+5.	Potions
+6.	Books/letters
+7.	Backpack
+8.	Rope
+9.	Torches
+10.	Skeleton Key
+
+
+
+1st prototype:
+
+start with backpack, rope, a potion or two, torches and a voucher for weapon at smithy, tasked to ascend through 
+the hold to the summit of the mountain for artifact that the duke wants
+
+option to talk to book keeper who is obsessed with the dwarves who used to inhabit the hold 
+to obtain knowledge of the hold (required to progress)
+
+move to smithy for first weapon, smithy also hands you explosives in case you get stuck
+
+head down into the cave to bridge to the hold, explosives needed to blast open the steel door
+
+hold not as abandoned as first thought infested with squatter goblins > defeat goblins
+
+knowledge of book keeper required to advance towards the lifting platforms to the top, can backtrack if not done
+at first, find skeleton key 
+
+ascend into temple where hobgoblins reside > big battle
+
+use skeleton key to open chest obtain artifact
+
+go down mountain side with ropes to return to duke and hand him the artifact
