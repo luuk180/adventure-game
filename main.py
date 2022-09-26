@@ -3,21 +3,16 @@ import json
 
 # Load the map and the player information.
 def init():
-    save = open("inventory.json")
-    if save == "":
-        return "new player"
-    player_stats = json.load(save.read())
+    player_stats = {}
 
     return player_stats
 
 
 def run_game():
-    player_stats = init()
-    if player_stats == "new player":
-        # Create new player
-        print()
 
 
+
+# Intro to the game
 def intro():
     print("Welcome to the hold of duke John!")
     print("Your adventure starts here.")
