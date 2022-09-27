@@ -24,7 +24,7 @@ def mountain_base():
         if uinput == '1':
             ad_guild()
         elif uinput == '2':
-            # vilSquare()
+            town_square()
         else:
             print("Please enter a valid option")
 
@@ -39,31 +39,35 @@ def ad_guild():
         uinput = input()
         if uinput == '1':
             # tradeTalk()
+            # hier moet nog een trade option komen met iets van een speciale paddestoel ofzo die je uit 8 udg_river() haalt voor explosieven zodat je 6 abandoned_hold in kan
         elif uinput == '2':
             mountain_base()
         else:
             print("Please enter a valid option")
 
 def town_square():
-    directions = ["1", "2", "3", "4"]
+    directions = ["1", "2", "3", "4", "5"]
     print(
         "Ahead of you lies the town square, there are a few market stalls selling their goods to the local populace and you can see the town elder from here. From the town square you can go to two directions \n "
         "1. Head to the hold of duke John of Castonath \n "
         "2. Go to the local blacksmith \n "
         "3. Speak with the town elder \n "
-        "4. Return down the mountain path")
+        "4. Return down the mountain path"
+        "5. Move towards the cave entrance")
     uinput = ""
     while uinput not in directions:
         print("Please input 1, 2 or 3")
         uinput = input()
         if uinput == '1':
-            # dukeHold()
+            duke_hold()
         elif uinput == '2':
-            # blacksmith()
+            blacksmith()
         elif uinput == '3':
             # tlkElder()
         elif uinput == '4:':
             mountain_base()
+        elif uinput == '5':
+            # def mt_path_comb(): hier heb je eerste combat met highwaymen daarna ga je door naar cave
         else:
             print("Please enter a valid option")
 
@@ -84,6 +88,7 @@ def duke_hold():
             print("Please enter a valid option")
 
 def keep_study():
+        directions = ["1"]
         print("You walk into Loremaster Luchika's study \n"
           "The first thing you note is that all the walls are completely lined with bookshelves wich are just bursting at the seems\n"
           "It almost seems that beside all the books and scrolls the is empty so you say shout:'Hello? Luchika are you in here?'\n"
@@ -93,8 +98,100 @@ def keep_study():
           #here he tells you about the puzzle and some other things that are irrelevant
           "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
           "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire excistence. Well anyways you best be off now best of luck!'")
-        duke_hold()
+        uinput = ""
+        while uinput not in directions:
+            print("Press 1 to return to the main hall")
+            uinput = input()
+            if uinput == '1':
+                duke_hold()
+            else:
+                print("Please enter a valid option")
 
+def blacksmith():
+    wep_choice = ["1", "2", "3"]
+    print("As you head to the smithy you are greeted by Hamon the blacksmith\n"
+          "'Hail, I've yet to see your face around here, you must be a traveler'\n"
+          "You explain the story and hand Hamon the permit given to you by Duke John\n"
+          "'Ah I see, well as per this permit I will allow you choice of weapon so tell me what would you'd like. Just one restriction I can't go and make something custom for you right now because the permit says that it would take too long, but follow me I'll show you my stock\n"
+          "You follow Hamon inside and he shows you his wares\n"
+          "1. Longsword\n"
+          "2. One handed axe\n"
+          "3. Warhammer")
+    while uinput not in wep_choice:
+        print("Please input 1, 2 or 3")
+        uinput = input()
+        if uinput == '1':
+                #add weapon longsword to inv
+            elif uinput == '2':
+                #add weapon axe to inv
+            elif uinput == '3':
+                #add weapon whammer to inv
+            else:
+                print("Please enter a valid option")
+    print("'Ah, excellent choice, I am very proud of that one\n"
+          "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
+          "Best of luck out there!")
+    # dummy_train() dit moet een combat function zijn denk ik? maar weet niet hoe je het wil implementen dus doe het maar ff zo 'dummy_train()' moet je ook wel terug plaatsen in de town_square()
 
+def cave_entrance():
+    directions  = ["1", "2", "3", "4"]
+    print("You approach the cave entrance that will lead to the abandoned dwarven hold\n"
+          "Once you have entered the cave you see a bridge made from cut stone that leads to what you assume will be the gate to the hold\n"
+          "Below the bridge you see a small river flowing down the mountain, you asses that you should be able to descend to the river and follow it if you so chose\n"
+          "1. Move along the bridge to the gate\n"
+          "2. Descend down the wall of the mountain and follow the river\n"
+          "3. Return to Castanor\n"
+          "4. Go back to the base of the mountain")
+    uinput = ""
+    while uinput not in directions:
+        print("Please input 1, 2, 3 or 4")
+        uinput = input()
+        if uinput == '1':
+            #hold_bridge()
+        elif uinput == '2':
+            print("You scale down the wall to the river")
+            #cave_river()
+        elif uinput == '3':
+            town_square()
+        elif uinput == '4:':
+            mountain_base()
+        else:
+            print("Please enter a valid option")
 
+def cave_river():
+    directions = ["1", "2", "3"]
+    print("You are now standing at the river bank\n"
+          "From here you vaguely see a lake that the river flows to, you also see a feint blue light emanating from the lake\n"
+          "1. Move towards the lake\n"
+          "2. Return to the cave entrance\n"
+          "3. Use some of the rope you have to climb up to the bridge that connects the cave entrance to the hold")
+    uinput = ""
+    while uinput not in directions:
+        print("Please input 1, 2, or 3")
+        uinput = input()
+        if uinput == '1':
+            #cave_river()
+        elif uinput == '2':
+            print("You scale down the wall to the river")
+            cave_entrance()
+        elif uinput == '3':
+            #hold_bridge()
+        else:
+            print("Please enter a valid option")
+
+def cave_lake():
+    directions = ["1"]
+    print("As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
+          "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
+          "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here, so you decide to collect some for them\n"
+          "1. Return to where you started following the river"
+    # mushrooms toevoegen aan de player inv zodat ze in ad_guild met guy kunnne praten voor explosives om deur open te maken
+    uinput = ""
+    while uinput not in directions:
+        print("Please input 1")
+        uinput = input()
+        if uinput == '1':
+            cave_river()
+        else:
+            print("Please enter a valid option")
 
