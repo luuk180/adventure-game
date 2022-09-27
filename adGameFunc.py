@@ -18,7 +18,9 @@ def mountain_base():
 
 def ad_guild():
     directions = ["1","2"]
-    print("Welcome to the adventurer guild, here you can speak to the few members of the guild\n 1. Speak with Rondine the Trader\n 2. Leave to the mountain base")
+    print("Welcome to the adventurer guild, here you can speak to the few members of the guild\n "
+          "1. Speak with Rondine the Trader\n "
+          "2. Leave to the mountain base")
     uinput = ""
     while uinput not in directions:
         print("Please input 1 or 2")
