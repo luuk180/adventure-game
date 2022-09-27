@@ -1,6 +1,7 @@
 # Load the map and the player information.
 from player import Player
 from mobs import Mob
+from adGameFunc import intro_scene
 from utils import print_inventory
 
 
@@ -12,6 +13,8 @@ def init(name):
 
 def run_game():
     player = intro()
+    intro_scene(player)
+
     print_inventory(player.inventory)
 
     return
