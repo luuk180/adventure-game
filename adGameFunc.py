@@ -33,7 +33,27 @@ def ad_guild():
             print("Please enter a valid option")
 
 def town_square():
-    directions = ["1","2","3"]
-    
+    directions = ["1", "2", "3", "4"]
+    print(
+        "Ahead of you lies the town square, there are a few market stalls selling their goods to the local populace and you can see the town elder from here. From the town square you can go to two directions \n "
+        "1. Head to the hold of duke John of Castonath \n "
+        "2. Go to the local blacksmith \n "
+        "3. Speak with the town elder \n "
+        "4. Return down the mountain path")
+    uinput = ""
+    while uinput not in directions:
+        print("Please input 1, 2 or 3")
+        uinput = input()
+        if uinput == '1':
+            dukeHold()
+        elif uinput == '2':
+            mtBase()
+        elif uinput == '3':
+            tlkElder()
+        elif uinput == '4:':
+            mtBase()
+        else:
+            print("Please enter a valid option")
+
 
 
