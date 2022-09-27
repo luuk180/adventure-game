@@ -1,21 +1,27 @@
-import json
-
-
 # Load the map and the player information.
-def init():
-    player_stats = {}
+from player import Player
+from utils import print_inventory
 
-    return player_stats
+
+def init():
+    player = Player("Henry", 20, ["Hat", "Sword"])
+
+    return player
 
 
 def run_game():
+    player = init()
+    print(print_inventory(player.inventory))
 
+    return
 
 
 # Intro to the game
 def intro():
     print("Welcome to the hold of duke John!")
     print("Your adventure starts here.")
+
+    return
 
 
 # Press the green button in the gutter to run the script.
