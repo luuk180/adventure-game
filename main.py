@@ -3,14 +3,14 @@ from player import Player
 from utils import print_inventory
 
 
-def init():
-    player = Player("Henry", 20, ["Hat", "Sword"])
+def init(name):
+    player = Player(name, 20, ["Hat"])
 
     return player
 
 
 def run_game():
-    player = init()
+    player = intro()
     print_inventory(player.inventory)
 
     return
@@ -18,10 +18,13 @@ def run_game():
 
 # Intro to the game
 def intro():
-    print("Welcome to the hold of duke John!")
-    print("Your adventure starts here.")
+    print("Welcome weary adventurer to the hold of duke John")
+    print("Let's start with your name: ")
+    name = input()
+    player = init(name)
+    print("Good luck, " + name + ".")
 
-    return
+    return player
 
 
 # Press the green button in the gutter to run the script.
