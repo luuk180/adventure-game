@@ -11,7 +11,7 @@ def init():
 
 def run_game():
     player = init()
-    print(print_inventory(player.inventory))
+    print_inventory(player.inventory)
 
     return
 
