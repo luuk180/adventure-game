@@ -16,7 +16,8 @@ def mountain_base():
           "To your east lies the adventurer guild \n"
           "To your north lies the mountain village of Castanor \n"
           "Where will you head? \n"
-          "1. Adventurer guild \n 2. Mountain village")
+          "1. Adventurer guild \n"
+          "2. Mountain village")
     uinput = ""
     while uinput not in directions:
         print("Please input 1 or 2")
@@ -54,11 +55,11 @@ def town_square():
         "1. Head to the hold of duke John of Castonath \n "
         "2. Go to the local blacksmith \n "
         "3. Speak with the town elder \n "
-        "4. Return down the mountain path"
+        "4. Return down the mountain path\n"
         "5. Move towards the cave entrance")
     uinput = ""
     while uinput not in directions:
-        print("Please input 1, 2 or 3")
+        print("Please input 1, 2, 3, 4 or 5")
         uinput = input()
         if uinput == '1':
             duke_hold()
@@ -66,7 +67,7 @@ def town_square():
             blacksmith()
         elif uinput == '3':
             # tlkElder()
-        elif uinput == '4:':
+        elif uinput == '4':
             mountain_base()
         elif uinput == '5':
             # def mt_path_comb(): hier heb je eerste combat met highwaymen daarna ga je door naar cave
@@ -155,10 +156,10 @@ def cave_entrance():
         print("Please input 1, 2, 3 or 4")
         uinput = input()
         if uinput == '1':
-            #hold_bridge()
+            bridge_hold()
         elif uinput == '2':
             print("You scale down the wall to the river")
-            #cave_river()
+            cave_river()
         elif uinput == '3':
             town_square()
         elif uinput == '4:':
@@ -179,7 +180,7 @@ def cave_river():
         print("Please input 1, 2, or 3")
         uinput = input()
         if uinput == '1':
-            cave_river()
+            cave_lake()
         elif uinput == '2':
             print("You scale down the wall to the river")
             cave_entrance()
@@ -194,7 +195,7 @@ def cave_lake():
     print("As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
           "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
           "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here, so you decide to collect some for them\n"
-          "1. Return to where you started following the river"
+          "1. Return to where you started following the river")
     # mushrooms toevoegen aan de player inv zodat ze in ad_guild met guy kunnne praten voor explosives om deur open te maken
     uinput = ""
     while uinput not in directions:
@@ -210,7 +211,7 @@ def bridge_hold:
     directions = ["1", "2", "3"]
     print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger untill you are standing in front of it\n"
           "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
-          "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled exploseion\n"
+          "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
           # add thing to blast open the gate
           "The gate now has a hole in it the size of 2 man and you can slip through quite easily\n"
           "1. Advance through the battered gate\n"
@@ -245,8 +246,9 @@ def mountain_hold():
     uinput = ''
     while uinput not in directions:
         print("please input 1 or 2")
+        uinput = input()
         if uinput == '1':
-            summit_temple
+            summit_temple()
         elif uinput== '2':
             bridge_hold()
         else:
@@ -272,6 +274,7 @@ def summit_temple():
     uinput = ''
     while uinput not in directions:
         print("please input 1 or 2")
+        uinput = input()
         if uinput == '1':
             town_square()
         elif uinput == '2':
