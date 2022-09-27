@@ -8,7 +8,7 @@ def intro_scene(player):
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
           "Now go, we will eagerly abide your return. Safe travels", player.name, "!")
-
+    duke_hold()
 
 def mountain_base():
     directions = ["1", "2"]
@@ -135,6 +135,8 @@ def blacksmith():
                 print("Please enter a valid option")
     print("'Ah, excellent choice, I am very proud of that one\n"
           "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
+          "Oh before I forget, I've heard that there could be goblins somewhere in the cave\n"
+          "They are a very crafty race and I would really like to hold and use some if their contraptions. If you can bring me any I'll give you something in return from my collection\n"
           "Best of luck out there!")
     # dummy_train() dit moet een combat function zijn denk ik? maar weet niet hoe je het wil implementen dus doe het maar ff zo 'dummy_train()' moet je ook wel terug plaatsen in de town_square()
 
@@ -177,12 +179,12 @@ def cave_river():
         print("Please input 1, 2, or 3")
         uinput = input()
         if uinput == '1':
-            #cave_river()
+            cave_river()
         elif uinput == '2':
             print("You scale down the wall to the river")
             cave_entrance()
         elif uinput == '3':
-            #hold_bridge()
+            hold_bridge()
         else:
             print("Please enter a valid option")
 
@@ -203,3 +205,76 @@ def cave_lake():
         else:
             print("Please enter a valid option")
 
+
+def bridge_hold:
+    directions = ["1", "2", "3"]
+    print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger untill you are standing in front of it\n"
+          "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
+          "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled exploseion\n"
+          # add thing to blast open the gate
+          "The gate now has a hole in it the size of 2 man and you can slip through quite easily\n"
+          "1. Advance through the battered gate\n"
+          "2. Walk back to the cave's entrance over the bridge\n"
+          "3. Climb down to the river that flows beneath the bridge")
+    uinput = ""
+    while uinput not in directions:
+        print("Please input 1, 2, or 3")
+        uinput = input()
+        if uinput == '1':
+            mountain_hold()
+        elif uinput == '2':
+            cave_entrance()
+        elif uinput == '3':
+            cave_river()
+        else:
+            print("Please enter a valid option")
+
+
+def mountain_hold():
+    directions = ["1", "2"]
+    print("You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the holf\n"
+          "It appears though that this hold is not as abandoned as you first thought! Goblins have taken up residence in the vacant houses and the explosions have not only awakened them but also greatly angered them\n"
+          "Prepare for combat!")
+    # bing bang boom you beat up the gobbos
+    print("After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
+          "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
+    # puzzle that you do to acces the platform kajigger and hands out skeleton key
+    print("Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
+          "1. Go up the elevator contraption to summit temple\n"
+          "2. Return to the bridge")
+    uinput = ''
+    while uinput not in directions:
+        print("please input 1 or 2")
+        if uinput == '1':
+            summit_temple
+        elif uinput== '2':
+            bridge_hold()
+        else:
+            print("Please enter a valid option")
+
+def summit_temple():
+    directions = ["1", "2"]
+    print("The elevator has finished it's climb towards the top and you are now standing in the middle of a relatively small room compared to the rest of the hold\n"
+          "Before you have more time to inspect your surrounding you see some movement in the corner of your eye however\n"
+          "It appears that a bunch of bigger and more ruthless goblins, hobgoblins are squatting in the temple of the dwarves\n"
+          "Prepare for combat!")
+    #bing bang boom you get beaten up by hobgobs, return to town and get some upgrades or blessing? idk yet
+    print("These hobgoblins are a lot stronger then their smaller goblin counterpart, but having finally defeated them all you can finally explore the rest of the room\n"
+          "Eventually you stumble upon a chest that has some markings on the top, you recognize these markings as the ones that Loremaster Luchika has told you about, this should be the chest that contain the artifact you have been tasked to retrieve")
+    #need skeleton key to open chest
+    print("The lock pops open after a satisfying click and drops to the ground\n"
+          "You open the chest and there lies the artifact you have been looking for\n"
+          "It's a silver necklace attached to a weird stone that changes colour depending on the angle that you look at\n"
+          "You can now return to duke John and receive your reward\n"
+          "You also find that you can scale down the mountain side with some rope so that you can get yourself very close to the town square\n"
+          "1. Go down the mountainside and return to the town square\n"
+          "2. Go down the elevator to the dwarven hold")
+    uinput = ''
+    while uinput not in directions:
+        print("please input 1 or 2")
+        if uinput == '1':
+            town_square()
+        elif uinput == '2':
+            mountain_hold()
+        else:
+            print("Please enter a valid option")
