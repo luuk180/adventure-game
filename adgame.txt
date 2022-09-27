@@ -1,6 +1,6 @@
 Gist of it, member of adventurer guild tasked to go into the mountain and retrieve artifact for the local duke
 Locations:
-1.	Cave
+1.	Cave entrance
 2.	Summit temple
 3.	Town square
 4.	Hold of the duke
@@ -27,6 +27,12 @@ Items:
 10.	Skeleton Key
 11. 	Combat buff (idk armor, training?)
 
+Puzzles:
+1.	First combat encounter, impossible or DMC5 first boss hard without any gear
+2.	Return to adventurer guild to buy explosives to progress, trade for something you find in cave
+3.	Dwarven puzzle to move up to the summit
+4.	Something with bucket of water and steam
+5.	
 
 
 1st prototype:
