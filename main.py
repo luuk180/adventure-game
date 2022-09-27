@@ -1,4 +1,3 @@
-# Load the map and the player information.
 from player import Player
 from mobs import Mob
 from adGameFunc import intro_scene
