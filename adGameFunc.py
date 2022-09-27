@@ -1,3 +1,15 @@
+def intro_scene():
+    print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
+          "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
+          "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
+          "'Welcome,", name, "I've been looking forward to meeting you ever since I put up the quest over at the adventurer guild \n"
+          "But let's get straight to the point, I require your skills to retrieve an ancient artifact for me \n"
+          "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
+          "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
+          "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
+          "Now go, we will eagerly abide your return. Safe travels", name, "!")
+    
+
 def mountain_base():
     directions = ["1", "2"]
     print("You are currently standing at the base of the mountain. \n"
@@ -45,13 +57,13 @@ def town_square():
         print("Please input 1, 2 or 3")
         uinput = input()
         if uinput == '1':
-            dukeHold()
+            # dukeHold()
         elif uinput == '2':
-            mtBase()
+            # blacksmith()
         elif uinput == '3':
-            tlkElder()
+            # tlkElder()
         elif uinput == '4:':
-            mtBase()
+            mountain_base()
         else:
             print("Please enter a valid option")
 
