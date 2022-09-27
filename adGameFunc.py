@@ -1,14 +1,14 @@
-def intro_scene():
+def intro_scene(player):
     print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
           "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
           "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
-          "'Welcome,", name, "I've been looking forward to meeting you ever since I posted the quest over at the adventurer's guild \n"
+          "'Welcome,", player.name, "I've been looking forward to meeting you ever since I put up the quest over at the adventurer guild \n"
           "But let's get straight to the point, I require your skills to retrieve an ancient artifact for me \n"
           "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
-          "Now go, we will eagerly abide your return. Safe travels", name, "!")
-    duke_hold()
+          "Now go, we will eagerly abide your return. Safe travels", player.name, "!")
+
 
 def mountain_base():
     directions = ["1", "2"]
@@ -28,6 +28,7 @@ def mountain_base():
         else:
             print("Please enter a valid option")
 
+
 def ad_guild():
     directions = ["1","2"]
     print("Welcome to the adventurer guild, here you can speak to the few members of the guild\n "
@@ -44,6 +45,7 @@ def ad_guild():
             mountain_base()
         else:
             print("Please enter a valid option")
+
 
 def town_square():
     directions = ["1", "2", "3", "4", "5"]
@@ -71,6 +73,7 @@ def town_square():
         else:
             print("Please enter a valid option")
 
+
 def duke_hold():
     directions = ["1", "2"]
     print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
@@ -86,6 +89,7 @@ def duke_hold():
             keep_study()
         else:
             print("Please enter a valid option")
+
 
 def keep_study():
         directions = ["1"]
@@ -106,6 +110,7 @@ def keep_study():
                 duke_hold()
             else:
                 print("Please enter a valid option")
+
 
 def blacksmith():
     wep_choice = ["1", "2", "3"]
@@ -133,6 +138,7 @@ def blacksmith():
           "Best of luck out there!")
     # dummy_train() dit moet een combat function zijn denk ik? maar weet niet hoe je het wil implementen dus doe het maar ff zo 'dummy_train()' moet je ook wel terug plaatsen in de town_square()
 
+
 def cave_entrance():
     directions  = ["1", "2", "3", "4"]
     print("You approach the cave entrance that will lead to the abandoned dwarven hold\n"
@@ -158,6 +164,7 @@ def cave_entrance():
         else:
             print("Please enter a valid option")
 
+
 def cave_river():
     directions = ["1", "2", "3"]
     print("You are now standing at the river bank\n"
@@ -178,6 +185,7 @@ def cave_river():
             #hold_bridge()
         else:
             print("Please enter a valid option")
+
 
 def cave_lake():
     directions = ["1"]
