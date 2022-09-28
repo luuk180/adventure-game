@@ -1,4 +1,7 @@
-def intro_scene(player):
+import player
+
+
+def intro_scene():
     print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
           "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
           "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
@@ -7,13 +10,8 @@ def intro_scene(player):
           "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
-<<<<<<< Updated upstream:location_scripts.py
-          "Now go, we will eagerly abide your return. Safe travels", player.name, "!")
-    duke_hold(player)
-=======
           "Now go, we will eagerly abide your return. Safe travels", player.name, "!\n")
     duke_hold()
->>>>>>> Stashed changes:adGameFunc.py
 
 def mountain_base():
     directions = ["1", "2"]
