@@ -1,9 +1,12 @@
+import os
+
+import global_objs
 import location_scripts
+import player
 
 
 def init(name):
-    global player
-    player = player.Player(name, 20, ["Hat"])
+    global_objs.player = player.Player(name, 20, ["Hat"], 2)
 
     return
 
@@ -20,9 +23,16 @@ def intro():
     print("Let's start with your name: ")
     name = input()
     init(name)
-    print("Good luck, " + player.name + ".")
+    print("Good luck, " + global_objs.player.name + ".")
 
     return
+
+
+def save_game():
+    if os.path.exists("./save-game"):
+        print("Loading save game...")
+    else:
+        print("No save game exists")
 
 
 # Press the green button in the gutter to run the script.

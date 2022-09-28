@@ -1,4 +1,4 @@
-import player
+import global_objs
 
 
 def intro_scene():
@@ -6,12 +6,12 @@ def intro_scene():
     print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
           "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
           "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
-          "'Welcome,", player.name, "I've been looking forward to meeting you ever since I put up the quest over at the adventurer guild \n"
+          "'Welcome,", global_objs.player.name, "I've been looking forward to meeting you ever since I put up the quest over at the adventurer guild \n"
           "But let's get straight to the point, I require your skills to retrieve an ancient artifact for me \n"
           "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
-          "Now go, we will eagerly abide your return. Safe travels", player.name, "!\n")
+          "Now go, we will eagerly abide your return. Safe travels", global_objs.player.name, "!\n")
     uinput = ''
     while uinput not in directions:
         print("Please input 1")
@@ -70,7 +70,7 @@ def town_square():
         "5. Move towards the cave entrance\n")
     uinput = ""
     while uinput not in directions:
-        print("Please input 1, 2, 3, 4 or 5")
+        print("Please input 1, 2, 3, 4")
         uinput = input()
         if uinput == '1':
             duke_hold()
@@ -80,8 +80,6 @@ def town_square():
             talk_elder()
         elif uinput == '4':
             mountain_base()
-        elif uinput == '5':
-            # def mt_path_comb(): hier heb je eerste combat met highwaymen daarna ga je door naar cave
         else:
             print("Please enter a valid option\n")
 
@@ -109,7 +107,7 @@ def keep_study():
           "The first thing you note is that all the walls are completely lined with bookshelves wich are just bursting at the seems\n"
           "It almost seems that beside all the books and scrolls the is empty so you say shout:'Hello? Luchika are you in here?'\n"
           "You hear a loud thud behind some books followed by a 'Yes, I'm here. I'll be out in a second' \n"
-          "'Greetings! You must be",player.name,"Duke John has told me about your arrival\n"
+          "'Greetings! You must be",global_objs.player.name,"Duke John has told me about your arrival\n"
           "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
           #here he tells you about the puzzle and some other things that are irrelevant
           "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
@@ -139,13 +137,13 @@ def blacksmith():
         print("Please input 1, 2 or 3")
         uinput = input()
         if uinput == '1':
-                player.inventory.append("Longsword")
-            elif uinput == '2':
-                player.inventory.append("1hAxe")
-            elif uinput == '3':
-                player.inventory.append("Warhammer")
-            else:
-                print("Please enter a valid option")
+            global_objs.player.inventory.append("Longsword")
+        elif uinput == '2':
+            global_objs.player.inventory.append("1hAxe")
+        elif uinput == '3':
+            global_objs.player.inventory.append("Warhammer")
+        else:
+            print("Please enter a valid option")
     print("'Ah, excellent choice, I am very proud of that one\n"
           "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
           "Oh before I forget, I've heard that there could be goblins somewhere in the cave\n"
@@ -204,7 +202,7 @@ def cave_river():
 
 def cave_lake():
     directions = ["1", "2"]
-    if "Mushrooms" not in player.inventory:
+    if "Mushrooms" not in global_objs.player.inventory:
         print("As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
               "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
               "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here\n"
@@ -217,7 +215,7 @@ def cave_lake():
             if uinput == '1':
                 cave_river()
             elif uinput == '2':
-                player.inventory.append("Mushrooms")
+                global_objs.player.inventory.append("Mushrooms")
             else:
                 print("Please enter a valid option\n")
     else:
@@ -248,7 +246,7 @@ def bridge_hold():
             print("Please input 1, 2, or 3")
             uinput = input()
             if uinput == '1':
-                if "Explosives" in player.inventory:
+                if "Explosives" in global_objs.player.inventory:
                     print("You blow a house sized hole into the door and proceed into the abandoned dwarven hold")
                     mountain_hold()
                 else:
@@ -336,14 +334,14 @@ def summit_temple():
 
 def trade_talk():
     directions = ["1"]
-    if "Mushrooms" in player.inventory:
+    if "Mushrooms" in global_objs.player.inventory:
         print("'Ah you have some of the Nitroshrooms that I wanted, I hope you didn't eat any because these little buggers are what we use to make explosives with\n"
               "Here, since you have brought me these I'll show you how to turn them into a shaped charge that you can use whenever something doesn't feel like moving out of your way'\n"
               "Explosives added to your inventory\n"
               "1. Exit the guild and return to the base of the mountain")
-        player.inventory.append("Explosives")
+        global_objs.player.inventory.append("Explosives")
     else:
-        print("'Hey,", player.name, "I'm Arlow the adventurer guild's demolitionist, with an expertise in explosives\n"
+        print("'Hey,", global_objs.player.name, "I'm Arlow the adventurer guild's demolitionist, with an expertise in explosives\n"
               "I've heard that you're heading into the cave that's a bit further up the mountain\n"
               "I wanted to head there myself to scavenge for some Nitroshrooms but haven't had the time since grandmaster Galleus left for some meeting of the adventurer union\n"
               "Tell you what, if you bring me some I'll show you how to make some explosives out of the 'shrooms'\n"
@@ -359,14 +357,14 @@ def trade_talk():
 
 def talk_elder():
     directions = ["1"]
-    if "Rope" not in player.inventory:
+    if "Rope" not in global_objs.player.inventory:
         print("'Hello, I don't think I've seen your face here before, you must be from out of town\n"
               "I've heard that you are gonna go into the cave so let me give you a word of advice\n"
               "Things can get quite perilous in there so I recommend you bring some rope with you, luckily for you I have some spare rope lying about that you can bring with you\n"
               "These old hands have no use for this anymore so you can just keep them\n"
               "Stay safe traveller'\n"
               "1. Return to the town square")
-        player.inventory.append("Rope")
+        global_objs.player.inventory.append("Rope")
 
     else:
         print("It appears that the elder has left, maybe it was time for him to take a nap, he is quite old after all\n"
