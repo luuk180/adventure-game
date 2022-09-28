@@ -1,7 +1,4 @@
-import player
-from mobs import Mob
 import location_scripts
-from utils import print_inventory
 
 
 def init(name):
@@ -13,11 +10,8 @@ def init(name):
 
 def run_game():
     intro()
+
     location_scripts.intro_scene()
-
-    print_inventory(player.inventory)
-
-    return
 
 
 # Intro to the game
@@ -28,7 +22,7 @@ def intro():
     init(name)
     print("Good luck, " + player.name + ".")
 
-    return player
+    return
 
 
 # Press the green button in the gutter to run the script.
