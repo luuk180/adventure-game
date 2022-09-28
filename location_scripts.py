@@ -2,6 +2,7 @@ import player
 
 
 def intro_scene():
+    directions = ["1"]
     print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
           "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
           "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
@@ -11,7 +12,14 @@ def intro_scene():
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
           "Now go, we will eagerly abide your return. Safe travels", player.name, "!\n")
-    duke_hold()
+    uinput = ''
+    while uinput not in directions:
+        print("Please input 1")
+        uinput = input()
+        if uinput == '1':
+            duke_hold()
+        else:
+            print("Please enter a valid option\n")
     
 
 def mountain_base():
@@ -106,7 +114,7 @@ def keep_study():
           "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
           #here he tells you about the puzzle and some other things that are irrelevant
           "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
-          "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire excistence. Well anyways you best be off now best of luck!'\n")
+          "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire existence. Well anyways you best be off now best of luck!'\n")
         uinput = ""
         while uinput not in directions:
             print("Press 1 to return to the main hall")
@@ -131,11 +139,11 @@ def blacksmith():
         print("Please input 1, 2 or 3")
         uinput = input()
         if uinput == '1':
-                #add weapon longsword to inv
+                player.inventory.append("Longsword")
             elif uinput == '2':
-                #add weapon axe to inv
+                player.inventory.append("1hAxe")
             elif uinput == '3':
-                #add weapon whammer to inv
+                player.inventory.append("Warhammer")
             else:
                 print("Please enter a valid option")
     print("'Ah, excellent choice, I am very proud of that one\n"
@@ -195,29 +203,42 @@ def cave_river():
 
 
 def cave_lake():
-    directions = ["1"]
-    print("As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
-          "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
-          "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here, so you decide to collect some for them\n"
-          "1. Return to where you started following the river")
-    # mushrooms toevoegen aan de player inv zodat ze in ad_guild met guy kunnne praten voor explosives om deur open te maken
-    uinput = ""
-    while uinput not in directions:
-        print("Please input 1")
-        uinput = input()
-        if uinput == '1':
-            cave_river()
-        else:
-            print("Please enter a valid option\n")
+    directions = ["1", "2"]
+    if "Mushrooms" not in player.inventory:
+        print("As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
+              "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
+              "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here\n"
+              "1. Return to where you started following the river\n"
+              "2. Collect mushrooms")
+        uinput = ""
+        while uinput not in directions:
+            print("Please input 1 or 2")
+            uinput = input()
+            if uinput == '1':
+                cave_river()
+            elif uinput == '2':
+                player.inventory.append("Mushrooms")
+            else:
+                print("Please enter a valid option\n")
+    else:
+        print("You return to the cave lake, where you collected the mushrooms earlier\n"
+              "There doesn't seem to be anything of interest here left\n"
+              "1. Walk back along the river")
+        uinput = ''
+        while uinput not in directions:
+            print("Please input 1")
+            uinput = input()
+            if uinput == '1':
+                cave_river()
+            else:
+                print("Please provide a valid option\n")
 
 
-def bridge_hold:
+def bridge_hold():
     directions = ["1", "2", "3"]
     print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger untill you are standing in front of it\n"
           "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
           "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
-          # add thing to blast open the gate
-          "The gate now has a hole in it the size of 2 man and you can slip through quite easily\n"
           "1. Proceed into the hold\n"
           "2. Walk back to the cave's entrance over the bridge\n"
           "3. Climb down to the river that flows beneath the bridge")
@@ -299,7 +320,7 @@ def trade_talk():
               "Here, since you have brought me these I'll show you how to turn them into a shaped charge that you can use whenever something doesn't feel like moving out of your way'\n"
               "Explosives added to your inventory\n"
               "1. Exit the guild and return to the base of the mountain")
-        player.inventory.append ("Explosives")
+        player.inventory.append("Explosives")
     else:
         print("'Hey,", player.name, "I'm Arlow the adventurer guild's demolitionist, with an expertise in explosives\n"
               "I've heard that you're heading into the cave that's a bit further up the mountain\n"
@@ -308,4 +329,9 @@ def trade_talk():
               "1. Exit the guild and return to the base of the mountain")
     uinput = ''
     while uinput not in directions:
-        
+        print("Please input 1")
+        uinput = input()
+        if uinput == '1':
+            mountain_base()
+        else:
+            print("Please enter a valid option")
