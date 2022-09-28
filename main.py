@@ -1,19 +1,19 @@
-from player import Player
+import player
 from mobs import Mob
-from location_scripts import intro_scene
+import location_scripts
 from utils import print_inventory
 
 
 def init(name):
     global player
-    player = Player(name, 20, ["Hat"])
+    player = player.Player(name, 20, ["Hat"])
 
     return
 
 
 def run_game():
     intro()
-    intro_scene(player)
+    location_scripts.intro_scene()
 
     print_inventory(player.inventory)
 
