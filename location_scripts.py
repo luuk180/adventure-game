@@ -235,30 +235,51 @@ def cave_lake():
 
 
 def bridge_hold():
-    directions = ["1", "2", "3"]
-    print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger untill you are standing in front of it\n"
-          "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
-          "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
-          "1. Proceed into the hold\n"
-          "2. Walk back to the cave's entrance over the bridge\n"
-          "3. Climb down to the river that flows beneath the bridge")
-    uinput = ""
-    while uinput not in directions:
-        print("Please input 1, 2, or 3")
-        uinput = input()
-        if uinput == '1':
-            if "Explosives" in player.inventory:
-                print("You blow a house sized hole into the door and proceed into the abandoned dwarven hold")
-                mountain_hold()
+    if not global_flags.bridge_open_door:
+        directions = ["1", "2", "3"]
+        print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
+            "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
+            "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
+            "1. Proceed into the hold\n"
+            "2. Walk back to the cave's entrance over the bridge\n"
+            "3. Climb down to the river that flows beneath the bridge")
+        uinput = ""
+        while uinput not in directions:
+            print("Please input 1, 2, or 3")
+            uinput = input()
+            if uinput == '1':
+                if "Explosives" in player.inventory:
+                    print("You blow a house sized hole into the door and proceed into the abandoned dwarven hold")
+                    mountain_hold()
+                else:
+                    print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open")
+                    continue
+            elif uinput == '2':
+                cave_entrance()
+            elif uinput == '3':
+                cave_river()
             else:
-                print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open")
-                continue
-        elif uinput == '2':
-            cave_entrance()
-        elif uinput == '3':
-            cave_river()
-        else:
-            print("Please enter a valid option\n")
+                print("Please enter a valid option\n")
+    else:
+        directions = ["1", "2", "3"]
+        print(
+            "You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
+            "The hole in the gate is still there\n"
+            "1. Proceed into the hold\n"
+            "2. Walk back to the cave's entrance over the bridge\n"
+            "3. Climb down to the river that flows beneath the bridge")
+        uinput = ""
+        while uinput not in directions:
+            print("Please input 1, 2, or 3")
+            uinput = input()
+            if uinput == '1':
+                mountain_hold()
+            elif uinput == '2':
+                cave_entrance()
+            elif uinput == '3':
+                cave_river()
+            else:
+                print("Please enter a valid option\n")
 
 
 def mountain_hold():
