@@ -8,7 +8,7 @@ def intro_scene(player):
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
           "Now go, we will eagerly abide your return. Safe travels", player.name, "!")
-    duke_hold()
+    duke_hold(player)
 
 def mountain_base():
     directions = ["1", "2"]
@@ -75,7 +75,7 @@ def town_square():
             print("Please enter a valid option")
 
 
-def duke_hold():
+def duke_hold(player):
     directions = ["1", "2"]
     print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
           "1. Exit the hold and proceed to the town square\n"
@@ -87,18 +87,18 @@ def duke_hold():
         if uinput == '1':
             town_square()
         elif uinput == '2':
-            keep_study()
+            keep_study(player)
         else:
             print("Please enter a valid option")
 
 
-def keep_study():
+def keep_study(player):
         directions = ["1"]
         print("You walk into Loremaster Luchika's study \n"
           "The first thing you note is that all the walls are completely lined with bookshelves wich are just bursting at the seems\n"
           "It almost seems that beside all the books and scrolls the is empty so you say shout:'Hello? Luchika are you in here?'\n"
           "You hear a loud thud behind some books followed by a 'Yes, I'm here. I'll be out in a second' \n"
-          "'Greetings! You must be",name,"Duke John has told me about your arrival\n"
+          "'Greetings! You must be",player.name,"Duke John has told me about your arrival\n"
           "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
           #here he tells you about the puzzle and some other things that are irrelevant
           "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
