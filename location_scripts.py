@@ -1,7 +1,4 @@
-import player
-
-
-def intro_scene():
+def intro_scene(player):
     print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
           "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
           "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
@@ -12,6 +9,7 @@ def intro_scene():
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
           "Now go, we will eagerly abide your return. Safe travels", player.name, "!\n")
     duke_hold()
+    
 
 def mountain_base():
     directions = ["1", "2"]
@@ -217,7 +215,7 @@ def bridge_hold:
           "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
           # add thing to blast open the gate
           "The gate now has a hole in it the size of 2 man and you can slip through quite easily\n"
-          "1. Advance through the battered gate\n"
+          "1. Proceed into the hold\n"
           "2. Walk back to the cave's entrance over the bridge\n"
           "3. Climb down to the river that flows beneath the bridge")
     uinput = ""
@@ -225,7 +223,12 @@ def bridge_hold:
         print("Please input 1, 2, or 3")
         uinput = input()
         if uinput == '1':
-            mountain_hold()
+            if "Explosives" in player.inventory:
+                print("You blow a house sized hole into the door and proceed into the abandoned dwarven hold")
+                mountain_hold()
+            else:
+                print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open")
+                continue
         elif uinput == '2':
             cave_entrance()
         elif uinput == '3':
@@ -242,7 +245,7 @@ def mountain_hold():
     # bing bang boom you beat up the gobbos
     print("After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
           "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
-    # puzzle that you do to acces the platform kajigger and hands out skeleton key
+    # puzzle that you do to access the platform kajigger and hands out skeleton key
     print("Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
           "1. Go up the elevator contraption to summit temple\n"
           "2. Return to the bridge")
@@ -284,3 +287,22 @@ def summit_temple():
             mountain_hold()
         else:
             print("Please enter a valid option\n")
+
+
+def trade_talk():
+    directions = ["1"]
+    if "Mushrooms" in player.inventory:
+        print("'Ah you have some of the Nitroshrooms that I wanted, I hope you didn't eat any because these little buggers are what we use to make explosives with\n"
+              "Here, since you have brought me these I'll show you how to turn them into a shaped charge that you can use whenever something doesn't feel like moving out of your way'\n"
+              "Explosives added to your inventory\n"
+              "1. Exit the guild and return to the base of the mountain")
+        player.inventory.append ("Explosives")
+    else:
+        print("'Hey,", player.name, "I'm Arlow the adventurer guild's demolitionist, with an expertise in explosives\n"
+              "I've heard that you're heading into the cave that's a bit further up the mountain\n"
+              "I wanted to head there myself to scavenge for some Nitroshrooms but haven't had the time since grandmaster Galleus left for some meeting of the adventurer union\n"
+              "Tell you what, if you bring me some I'll show you how to make some explosives out of the 'shrooms'\n"
+              "1. Exit the guild and return to the base of the mountain")
+    uinput = ''
+    while uinput not in directions:
+        
