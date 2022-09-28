@@ -20,6 +20,7 @@ def intro_scene():
             duke_hold()
         else:
             print("Please enter a valid option\n")
+            continue
     
 
 def mountain_base():
@@ -40,6 +41,7 @@ def mountain_base():
             town_square()
         else:
             print("Please enter a valid option\n")
+            continue
 
 
 def ad_guild():
@@ -84,6 +86,7 @@ def town_square():
             # combat met highwaymen die je nadat je ze veralge hebt altijd naar cave_entrance() laat gaan
         else:
             print("Please enter a valid option\n")
+            continue
 
 
 def duke_hold():
@@ -101,6 +104,7 @@ def duke_hold():
             keep_study()
         else:
             print("Please enter a valid option\n")
+            continue
 
 
 def keep_study():
@@ -122,6 +126,7 @@ def keep_study():
                 duke_hold()
             else:
                 print("Please enter a valid option\n")
+                continue
 
 
 def blacksmith():
@@ -146,6 +151,7 @@ def blacksmith():
             global_objs.player.inventory.append("Warhammer")
         else:
             print("Please enter a valid option")
+            continue
     print("'Ah, excellent choice, I am very proud of that one\n"
           "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
           "Oh before I forget, I've heard that there could be goblins somewhere in the cave\n"
@@ -178,6 +184,7 @@ def cave_entrance():
             mountain_base()
         else:
             print("Please enter a valid option\n")
+            continue
 
 
 def cave_river():
@@ -200,6 +207,7 @@ def cave_river():
             hold_bridge()
         else:
             print("Please enter a valid option\n")
+            continue
 
 
 def cave_lake():
@@ -221,6 +229,7 @@ def cave_lake():
                 cave_lake()
             else:
                 print("Please enter a valid option\n")
+                continue
     else:
         print("You return to the cave lake, where you collected the mushrooms earlier\n"
               "There doesn't seem to be anything of interest here left\n"
@@ -233,6 +242,7 @@ def cave_lake():
                 cave_river()
             else:
                 print("Please provide a valid option\n")
+                continue
 
 
 def bridge_hold():
@@ -261,6 +271,7 @@ def bridge_hold():
                 cave_river()
             else:
                 print("Please enter a valid option\n")
+                continue
     else:
         directions = ["1", "2", "3"]
         print(
@@ -281,6 +292,7 @@ def bridge_hold():
                 cave_river()
             else:
                 print("Please enter a valid option\n")
+                continue
 
 
 def mountain_hold():
@@ -305,6 +317,7 @@ def mountain_hold():
             bridge_hold()
         else:
             print("Please enter a valid option\n")
+            continue
 
 def summit_temple():
     directions = ["1", "2"]
@@ -333,6 +346,7 @@ def summit_temple():
             mountain_hold()
         else:
             print("Please enter a valid option\n")
+            continue
 
 
 def trade_talk():
@@ -357,6 +371,7 @@ def trade_talk():
             mountain_base()
         else:
             print("Please enter a valid option")
+            continue
 
 def talk_elder():
     directions = ["1"]
@@ -380,3 +395,4 @@ def talk_elder():
             town_square()
         else:
             print("Please enter a valid option")
+            continue
