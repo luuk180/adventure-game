@@ -45,7 +45,7 @@ def mountain_base():
 def ad_guild():
     directions = ["1","2"]
     print("Welcome to the adventurer guild, here you can speak to the few members of the guild\n "
-          "1. Speak with Rondine the Trader\n "
+          "1. Speak with master Arlow\n "
           "2. Leave to the mountain base\n")
     uinput = ""
     while uinput not in directions:
@@ -77,7 +77,7 @@ def town_square():
         elif uinput == '2':
             blacksmith()
         elif uinput == '3':
-            # tlkElder()
+            talk_elder()
         elif uinput == '4':
             mountain_base()
         elif uinput == '5':
@@ -354,5 +354,28 @@ def trade_talk():
         uinput = input()
         if uinput == '1':
             mountain_base()
+        else:
+            print("Please enter a valid option")
+
+def talk_elder():
+    directions = ["1"]
+    if "Rope" not in player.inventory:
+        print("'Hello, I don't think I've seen your face here before, you must be from out of town\n"
+              "I've heard that you are gonna go into the cave so let me give you a word of advice\n"
+              "Things can get quite perilous in there so I recommend you bring some rope with you, luckily for you I have some spare rope lying about that you can bring with you\n"
+              "These old hands have no use for this anymore so you can just keep them\n"
+              "Stay safe traveller'\n"
+              "1. Return to the town square")
+        player.inventory.append("Rope")
+
+    else:
+        print("It appears that the elder has left, maybe it was time for him to take a nap, he is quite old after all\n"
+              "1. Return to the town square")
+    uinput= ''
+    while uinput not in directions:
+        print("Please input 1")
+        uinput = input()
+        if uinput == '1':
+            town_square()
         else:
             print("Please enter a valid option")
