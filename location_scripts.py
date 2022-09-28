@@ -10,7 +10,7 @@ def intro_scene():
           "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
           "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
           "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
-          "Now go, we will eagerly abide your return. Safe travels", player.name, "!")
+          "Now go, we will eagerly abide your return. Safe travels", player.name, "!\n")
     duke_hold()
 
 def mountain_base():
@@ -20,7 +20,7 @@ def mountain_base():
           "To your north lies the mountain village of Castanor \n"
           "Where will you head? \n"
           "1. Adventurer guild \n"
-          "2. Mountain village")
+          "2. Mountain village\n")
     uinput = ""
     while uinput not in directions:
         print("Please input 1 or 2")
@@ -30,14 +30,14 @@ def mountain_base():
         elif uinput == '2':
             town_square()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def ad_guild():
     directions = ["1","2"]
     print("Welcome to the adventurer guild, here you can speak to the few members of the guild\n "
           "1. Speak with Rondine the Trader\n "
-          "2. Leave to the mountain base")
+          "2. Leave to the mountain base\n")
     uinput = ""
     while uinput not in directions:
         print("Please input 1 or 2")
@@ -48,7 +48,7 @@ def ad_guild():
         elif uinput == '2':
             mountain_base()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def town_square():
@@ -59,7 +59,7 @@ def town_square():
         "2. Go to the local blacksmith \n "
         "3. Speak with the town elder \n "
         "4. Return down the mountain path\n"
-        "5. Move towards the cave entrance")
+        "5. Move towards the cave entrance\n")
     uinput = ""
     while uinput not in directions:
         print("Please input 1, 2, 3, 4 or 5")
@@ -75,14 +75,14 @@ def town_square():
         elif uinput == '5':
             # def mt_path_comb(): hier heb je eerste combat met highwaymen daarna ga je door naar cave
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def duke_hold(player):
     directions = ["1", "2"]
     print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
           "1. Exit the hold and proceed to the town square\n"
-          "2. Go the Loremaster Luchika's study")
+          "2. Go the Loremaster Luchika's study\n")
     uinput = ""
     while uinput not in directions:
         print("Please input 1 or 2")
@@ -92,7 +92,7 @@ def duke_hold(player):
         elif uinput == '2':
             keep_study(player)
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def keep_study(player):
@@ -105,7 +105,7 @@ def keep_study(player):
           "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
           #here he tells you about the puzzle and some other things that are irrelevant
           "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
-          "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire excistence. Well anyways you best be off now best of luck!'")
+          "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire excistence. Well anyways you best be off now best of luck!'\n")
         uinput = ""
         while uinput not in directions:
             print("Press 1 to return to the main hall")
@@ -113,7 +113,7 @@ def keep_study(player):
             if uinput == '1':
                 duke_hold()
             else:
-                print("Please enter a valid option")
+                print("Please enter a valid option\n")
 
 
 def blacksmith():
@@ -141,7 +141,7 @@ def blacksmith():
           "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
           "Oh before I forget, I've heard that there could be goblins somewhere in the cave\n"
           "They are a very crafty race and I would really like to hold and use some if their contraptions. If you can bring me any I'll give you something in return from my collection\n"
-          "Best of luck out there!")
+          "Best of luck out there!\n")
     # dummy_train() dit moet een combat function zijn denk ik? maar weet niet hoe je het wil implementen dus doe het maar ff zo 'dummy_train()' moet je ook wel terug plaatsen in de town_square()
 
 
@@ -161,14 +161,14 @@ def cave_entrance():
         if uinput == '1':
             bridge_hold()
         elif uinput == '2':
-            print("You scale down the wall to the river")
+            print("You scale down the wall to the river\n")
             cave_river()
         elif uinput == '3':
             town_square()
         elif uinput == '4:':
             mountain_base()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def cave_river():
@@ -185,12 +185,12 @@ def cave_river():
         if uinput == '1':
             cave_lake()
         elif uinput == '2':
-            print("You scale down the wall to the river")
+            print("You climb up the wall to the cave entrance\n")
             cave_entrance()
         elif uinput == '3':
             hold_bridge()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def cave_lake():
@@ -207,7 +207,7 @@ def cave_lake():
         if uinput == '1':
             cave_river()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def bridge_hold:
@@ -231,7 +231,7 @@ def bridge_hold:
         elif uinput == '3':
             cave_river()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 
 def mountain_hold():
@@ -255,7 +255,7 @@ def mountain_hold():
         elif uinput== '2':
             bridge_hold()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
 
 def summit_temple():
     directions = ["1", "2"]
@@ -283,4 +283,4 @@ def summit_temple():
         elif uinput == '2':
             mountain_hold()
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
