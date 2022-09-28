@@ -1,4 +1,7 @@
-def intro_scene(player):
+import player
+
+
+def intro_scene():
     directions = ["1"]
     print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
           "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
@@ -84,7 +87,7 @@ def town_square():
             print("Please enter a valid option\n")
 
 
-def duke_hold(player):
+def duke_hold():
     directions = ["1", "2"]
     print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
           "1. Exit the hold and proceed to the town square\n"
@@ -96,12 +99,12 @@ def duke_hold(player):
         if uinput == '1':
             town_square()
         elif uinput == '2':
-            keep_study(player)
+            keep_study()
         else:
             print("Please enter a valid option\n")
 
 
-def keep_study(player):
+def keep_study():
         directions = ["1"]
         print("You walk into Loremaster Luchika's study \n"
           "The first thing you note is that all the walls are completely lined with bookshelves wich are just bursting at the seems\n"
