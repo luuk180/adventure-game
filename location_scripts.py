@@ -70,7 +70,7 @@ def town_square():
         "5. Move towards the cave entrance\n")
     uinput = ""
     while uinput not in directions:
-        print("Please input 1, 2, 3, 4")
+        print("Please input 1, 2, 3, 4 or 5")
         uinput = input()
         if uinput == '1':
             duke_hold()
@@ -80,6 +80,8 @@ def town_square():
             talk_elder()
         elif uinput == '4':
             mountain_base()
+        elif uinput == '5':
+            # combat met highwaymen die je nadat je ze veralge hebt altijd naar cave_entrance() laat gaan
         else:
             print("Please enter a valid option\n")
 
@@ -172,7 +174,7 @@ def cave_entrance():
             cave_river()
         elif uinput == '3':
             town_square()
-        elif uinput == '4:':
+        elif uinput == '4':
             mountain_base()
         else:
             print("Please enter a valid option\n")
@@ -216,6 +218,7 @@ def cave_lake():
                 cave_river()
             elif uinput == '2':
                 global_objs.player.inventory.append("Mushrooms")
+                cave_lake()
             else:
                 print("Please enter a valid option\n")
     else:
@@ -233,7 +236,7 @@ def cave_lake():
 
 
 def bridge_hold():
-    if not global_flags.bridge_open_door:
+    if not global_objs.bridge_open_door:
         directions = ["1", "2", "3"]
         print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
             "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
@@ -251,7 +254,7 @@ def bridge_hold():
                     mountain_hold()
                 else:
                     print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open")
-                    continue
+                    bridge_hold()
             elif uinput == '2':
                 cave_entrance()
             elif uinput == '3':
@@ -282,7 +285,7 @@ def bridge_hold():
 
 def mountain_hold():
     directions = ["1", "2"]
-    print("You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the holf\n"
+    print("You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the hold\n"
           "It appears though that this hold is not as abandoned as you first thought! Goblins have taken up residence in the vacant houses and the explosions have not only awakened them but also greatly angered them\n"
           "Prepare for combat!")
     # bing bang boom you beat up the gobbos
@@ -294,7 +297,7 @@ def mountain_hold():
           "2. Return to the bridge")
     uinput = ''
     while uinput not in directions:
-        print("please input 1 or 2")
+        print("Please input 1 or 2")
         uinput = input()
         if uinput == '1':
             summit_temple()
