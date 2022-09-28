@@ -1,6 +1,6 @@
 from player import Player
 from mobs import Mob
-from adGameFunc import intro_scene
+from location_scripts import intro_scene
 from utils import print_inventory
 
 
