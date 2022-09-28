@@ -236,8 +236,6 @@ def bridge_hold():
     print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger untill you are standing in front of it\n"
           "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
           "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
-          # add thing to blast open the gate
-          "The gate now has a hole in it the size of 2 man and you can slip through quite easily\n"
           "1. Proceed into the hold\n"
           "2. Walk back to the cave's entrance over the bridge\n"
           "3. Climb down to the river that flows beneath the bridge")
