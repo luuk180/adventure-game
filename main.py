@@ -5,13 +5,14 @@ from utils import print_inventory
 
 
 def init(name):
+    global player
     player = Player(name, 20, ["Hat"])
 
-    return player
+    return
 
 
 def run_game():
-    player = intro()
+    intro()
     intro_scene(player)
 
     print_inventory(player.inventory)
@@ -24,8 +25,8 @@ def intro():
     print("Welcome weary adventurer to the hold of duke John")
     print("Let's start with your name: ")
     name = input()
-    player = init(name)
-    print("Good luck, " + name + ".")
+    init(name)
+    print("Good luck, " + player.name + ".")
 
     return player
 
