@@ -52,8 +52,7 @@ def ad_guild():
         print("Please input 1 or 2")
         uinput = input()
         if uinput == '1':
-            # tradeTalk()
-            # hier moet nog een trade option komen met iets van een speciale paddestoel ofzo die je uit 8 udg_river() haalt voor explosieven zodat je 6 abandoned_hold in kan
+            trade_talk()
         elif uinput == '2':
             mountain_base()
         else:
@@ -135,6 +134,7 @@ def blacksmith():
           "1. Longsword\n"
           "2. One handed axe\n"
           "3. Warhammer")
+    uinput = ''
     while uinput not in wep_choice:
         print("Please input 1, 2 or 3")
         uinput = input()
