@@ -12,7 +12,7 @@ class Mob:
     def fight(self):
         fighting = True
         while fighting:
-            print("You are in combat, you can either attack or block.")
+            print("You are in combat, you can either attack or try to run away.")
             print("1. Attack")
             print("2. Run away")
             choice = input()
