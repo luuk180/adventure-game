@@ -3,15 +3,17 @@ import global_objs
 
 def intro_scene():
     directions = ["1"]
-    print("You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
-          "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
-          "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
-          "'Welcome,", global_objs.player.name, "I've been looking forward to meeting you ever since I put up the quest over at the adventurer guild \n"
-          "But let's get straight to the point, I require your skills to retrieve an ancient artifact for me \n"
-          "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
-          "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
-          "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
-          "Now go, we will eagerly abide your return. Safe travels", global_objs.player.name, "!\n")
+    print(
+        "You are standing in the great hall of Duke John of Castonath. The walls of the hall are decked with portraits which you assume are the ancestors of the current Duke. \n"
+        "A courtier approaches you as you are admiring the portrait with the most astonishing beard you have ever seen and says to you: His lordship the duke will now addres you \n"
+        "You follow the courtier to the Duke as you approach the old Duke finally comes into your view.\n"
+        "'Welcome,", global_objs.player.name,
+        "I've been looking forward to meeting you ever since I put up the quest over at the adventurer guild \n"
+        "But let's get straight to the point, I require your skills to retrieve an ancient artifact for me \n"
+        "My book keeper has been obsessed with the Dwarven ruins that are close to the city of Castonath ever since his birth and he has told me about an artifact that could be infused with magic which wi-' He's interrupted by the courtier giving a loud cough \n"
+        "'Right, sorry, the details shouldn't matter', he continues: 'I've been told that the cave can be quite dangerous so we have prepared a permit for you so that you may go to Hamon the Blacksmith to pick up a weapon for this journey \n"
+        "While you're still here you should go and talk to Luchika, he's my book keeper he might have some useful information for you\n"
+        "Now go, we will eagerly abide your return. Safe travels", global_objs.player.name, "!\n")
     uinput = ''
     while uinput not in directions:
         print("Please input 1")
@@ -22,7 +24,7 @@ def intro_scene():
         else:
             print("Please enter a valid option\n")
             continue
-    
+
 
 def mountain_base():
     directions = ["1", "2"]
@@ -48,7 +50,7 @@ def mountain_base():
 
 
 def ad_guild():
-    directions = ["1","2"]
+    directions = ["1", "2"]
     print("Welcome to the adventurer guild, here you can speak to the few members of the guild\n "
           "1. Speak with master Arlow\n "
           "2. Leave to the mountain base\n")
@@ -92,11 +94,14 @@ def town_square():
             print("You exit the town and walk down the path to the base of the mountain\n")
             mountain_base()
         elif uinput == '5':
-            print("You start moving towards the cave entrance\n"
-                  "As you walk through a quite shallow valley you hear some murmuring coming from the top\n"
-                  "The whispers came from a small group of highwaymen!\n"
-                  "Prepare for combat!\n")
-            # combat met highwaymen die je nadat je ze veralge hebt altijd naar cave_entrance() laat gaan
+            if not global_objs.highwaymen.dead:
+                print("You start moving towards the cave entrance\n"
+                      "As you walk through a quite shallow valley you hear some murmuring coming from the top\n"
+                      "The whispers came from a small group of highwaymen!\n"
+                      "Prepare for combat!\n")
+                global_objs.highwaymen.fight(global_objs.player)
+            else:
+                print("You exit the town and walk to the cave entrance")
         else:
             print("Please enter a valid option\n")
             continue
@@ -105,10 +110,11 @@ def town_square():
 def duke_hold():
     if "Artifact" in global_objs.player.inventory:
         directions = ["1", "2", "3"]
-        print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
-              "1. Exit the hold and proceed to the town square\n"
-              "2. Go the Loremaster Luchika's study\n"
-              "3. Present the artifact to duke John")
+        print(
+            "You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
+            "1. Exit the hold and proceed to the town square\n"
+            "2. Go the Loremaster Luchika's study\n"
+            "3. Present the artifact to duke John")
         uinput = ''
         while uinput not in directions:
             print("Please input 1, 2 or 3")
@@ -127,9 +133,10 @@ def duke_hold():
                 continue
     else:
         directions = ["1", "2"]
-        print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
-              "1. Exit the hold and proceed to the town square\n"
-              "2. Go the Loremaster Luchika's study\n")
+        print(
+            "You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
+            "1. Exit the hold and proceed to the town square\n"
+            "2. Go the Loremaster Luchika's study\n")
         uinput = ""
         while uinput not in directions:
             print("Please input 1 or 2")
@@ -146,26 +153,26 @@ def duke_hold():
 
 
 def keep_study():
-        directions = ["1"]
-        print("You walk into Loremaster Luchika's study \n"
+    directions = ["1"]
+    print("You walk into Loremaster Luchika's study \n"
           "The first thing you note is that all the walls are completely lined with bookshelves wich are just bursting at the seems\n"
           "It almost seems that beside all the books and scrolls the is empty so you say shout:'Hello? Luchika are you in here?'\n"
           "You hear a loud thud behind some books followed by a 'Yes, I'm here. I'll be out in a second' \n"
-          "'Greetings! You must be",global_objs.player.name,"Duke John has told me about your arrival\n"
-          "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
-          #here he tells you about the puzzle and some other things that are irrelevant
-          "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
-          "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire existence. Well anyways you best be off now best of luck!'\n")
-        uinput = ""
-        while uinput not in directions:
-            print("Press 1 to return to the main hall")
-            uinput = input()
-            if uinput == '1':
-                print("You exit the study through the door back into the hold\n")
-                duke_hold()
-            else:
-                print("Please enter a valid option\n")
-                continue
+          "'Greetings! You must be", global_objs.player.name, "Duke John has told me about your arrival\n"
+                                                              "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
+    # here he tells you about the puzzle and some other things that are irrelevant
+                                                              "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
+                                                              "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire existence. Well anyways you best be off now best of luck!'\n")
+    uinput = ""
+    while uinput not in directions:
+        print("Press 1 to return to the main hall")
+        uinput = input()
+        if uinput == '1':
+            print("You exit the study through the door back into the hold\n")
+            duke_hold()
+        else:
+            print("Please enter a valid option\n")
+            continue
 
 
 def blacksmith():
@@ -204,17 +211,15 @@ def blacksmith():
 
 
 def cave_entrance():
-    directions  = ["1", "2", "3", "4"]
-    print("You approach the cave entrance that will lead to the abandoned dwarven hold\n"
-          "You run into a dwarf that starts attacking you.")
-    global_objs.lost_dwarf.fight(global_objs.player)
+    directions = ["1", "2", "3", "4"]
 
-    print("Once you have entered the cave you see a bridge made from cut stone that leads to what you assume will be the gate to the hold\n"
-          "There is a steep wall that leads to a lower area of the cave where you can hear what you assume to be a river, you asses that you can scale down the wall if you have some rope\n"
-          "1. Move along the bridge to the gate\n"
-          "2. Descend down the wall of the mountain and follow the river\n"
-          "3. Return to Castanor\n"
-          "4. Go back to the base of the mountain")
+    print(
+        "Once you have entered the cave you see a bridge made from cut stone that leads to what you assume will be the gate to the hold\n"
+        "There is a steep wall that leads to a lower area of the cave where you can hear what you assume to be a river, you asses that you can scale down the wall if you have some rope\n"
+        "1. Move along the bridge to the gate\n"
+        "2. Descend down the wall of the mountain and follow the river\n"
+        "3. Return to Castanor\n"
+        "4. Go back to the base of the mountain")
     uinput = ""
     while uinput not in directions:
         print("Please input 1, 2, 3 or 4")
@@ -264,11 +269,12 @@ def cave_river():
 def cave_lake():
     directions = ["1", "2"]
     if "Mushrooms" not in global_objs.player.inventory:
-        print("As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
-              "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
-              "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here\n"
-              "1. Return to where you started following the river\n"
-              "2. Collect mushrooms")
+        print(
+            "As you keep heading towards what you assume to be the river you can see that the blue light is growing ever more bright\n"
+            "Now that you have entered the room where the lake resides in you see that on a few edges around the lake are inhabited by some large mushrooms which appear to bee the source of the blue hue\n"
+            "You feintly remember one of the guild members talking about mushrooms that somewhat fit the description of the ones that grow around here\n"
+            "1. Return to where you started following the river\n"
+            "2. Collect mushrooms")
         uinput = ""
         while uinput not in directions:
             print("Please input 1 or 2")
@@ -301,7 +307,8 @@ def cave_lake():
 def bridge_hold():
     if not global_objs.bridge_open_door:
         directions = ["1", "2"]
-        print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
+        print(
+            "You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
             "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
             "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
             "1. Proceed into the hold\n"
@@ -316,7 +323,8 @@ def bridge_hold():
                     global_objs.bridge_open_door = True
                     mountain_hold()
                 else:
-                    print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open\n")
+                    print(
+                        "The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open\n")
                     bridge_hold()
             elif uinput == '2':
                 print("You walk over the bridge back to the entrace of the cave\n")
@@ -348,17 +356,20 @@ def bridge_hold():
 
 def mountain_hold():
     directions = ["1", "2"]
-    print("You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the hold\n"
-          "It appears though that this hold is not as abandoned as you first thought! Goblins have taken up residence in the vacant houses and the explosions have not only awakened them but also greatly angered them\n"
-          "Prepare for combat!")
+    print(
+        "You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the hold\n"
+        "It appears though that this hold is not as abandoned as you first thought! Goblins have taken up residence in the vacant houses and the explosions have not only awakened them but also greatly angered them\n"
+        "Prepare for combat!")
     # bing bang boom you beat up the gobbos
-    print("After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
-          "It does look like in their hurry the goblins left some things lying around"
-          "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
+    print(
+        "After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
+        "It does look like in their hurry the goblins left some things lying around"
+        "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
     # puzzle that you do to access the platform kajigger and hands out skeleton key
-    print("Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
-          "1. Go up the elevator contraption to summit temple\n"
-          "2. Return to the bridge")
+    print(
+        "Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
+        "1. Go up the elevator contraption to summit temple\n"
+        "2. Return to the bridge")
     uinput = ''
     while uinput not in directions:
         print("Please input 1 or 2")
@@ -366,23 +377,26 @@ def mountain_hold():
         if uinput == '1':
             print("You use the lifting platform and ascend to the top of the hold\n")
             summit_temple()
-        elif uinput== '2':
+        elif uinput == '2':
             print("You exit the hold through the battered gate\n")
             bridge_hold()
         else:
             print("Please enter a valid option\n")
             continue
 
+
 def summit_temple():
     directions = ["1", "2"]
-    print("The elevator has finished it's climb towards the top and you are now standing in the middle of a relatively small room compared to the rest of the hold\n"
-          "Before you have more time to inspect your surrounding you see some movement in the corner of your eye however\n"
-          "It appears that a bunch of bigger and more ruthless goblins, hobgoblins are squatting in the temple of the dwarves\n"
-          "Prepare for combat!")
-    #bing bang boom you get beaten up by hobgobs, return to town and get some upgrades or blessing? idk yet
-    print("These hobgoblins are a lot stronger then their smaller goblin counterpart, but having finally defeated them all you can finally explore the rest of the room\n"
-          "Eventually you stumble upon a chest that has some markings on the top, you recognize these markings as the ones that Loremaster Luchika has told you about, this should be the chest that contain the artifact you have been tasked to retrieve")
-    #need skeleton key to open chest
+    print(
+        "The elevator has finished it's climb towards the top and you are now standing in the middle of a relatively small room compared to the rest of the hold\n"
+        "Before you have more time to inspect your surrounding you see some movement in the corner of your eye however\n"
+        "It appears that a bunch of bigger and more ruthless goblins, hobgoblins are squatting in the temple of the dwarves\n"
+        "Prepare for combat!")
+    # bing bang boom you get beaten up by hobgobs, return to town and get some upgrades or blessing? idk yet
+    print(
+        "These hobgoblins are a lot stronger then their smaller goblin counterpart, but having finally defeated them all you can finally explore the rest of the room\n"
+        "Eventually you stumble upon a chest that has some markings on the top, you recognize these markings as the ones that Loremaster Luchika has told you about, this should be the chest that contain the artifact you have been tasked to retrieve")
+    # need skeleton key to open chest
     print("The lock pops open after a satisfying click and drops to the ground\n"
           "You open the chest and there lies the artifact you have been looking for\n"
           "It's a silver necklace attached to a weird stone that changes colour depending on the angle that you look at\n"
@@ -406,13 +420,15 @@ def summit_temple():
 def trade_talk():
     directions = ["1"]
     if "Mushrooms" in global_objs.player.inventory:
-        print("'Ah you have some of the Nitroshrooms that I wanted, I hope you didn't eat any because these little buggers are what we use to make explosives with\n"
-              "Here, since you have brought me these I'll show you how to turn them into a shaped charge that you can use whenever something doesn't feel like moving out of your way'\n"
-              "Explosives added to your inventory\n"
-              "1. Exit the guild and return to the base of the mountain")
+        print(
+            "'Ah you have some of the Nitroshrooms that I wanted, I hope you didn't eat any because these little buggers are what we use to make explosives with\n"
+            "Here, since you have brought me these I'll show you how to turn them into a shaped charge that you can use whenever something doesn't feel like moving out of your way'\n"
+            "Explosives added to your inventory\n"
+            "1. Exit the guild and return to the base of the mountain")
         global_objs.player.inventory.append("Explosives")
     else:
-        print("'Hey,", global_objs.player.name, "I'm Arlow the adventurer guild's demolitionist, with an expertise in explosives\n"
+        print("'Hey,", global_objs.player.name,
+              "I'm Arlow the adventurer guild's demolitionist, with an expertise in explosives\n"
               "I've heard that you're heading into the cave that's a bit further up the mountain\n"
               "I wanted to head there myself to scavenge for some Nitroshrooms but haven't had the time since grandmaster Galleus left for some meeting of the adventurer union\n"
               "Tell you what, if you bring me some I'll show you how to make some explosives out of the 'shrooms'\n"
@@ -426,6 +442,7 @@ def trade_talk():
         else:
             print("Please enter a valid option")
             continue
+
 
 def talk_elder():
     directions = ["1"]
@@ -441,7 +458,7 @@ def talk_elder():
     else:
         print("It appears that the elder has left, maybe it was time for him to take a nap, he is quite old after all\n"
               "1. Return to the town square")
-    uinput= ''
+    uinput = ''
     while uinput not in directions:
         print("Please input 1")
         uinput = input()
@@ -457,20 +474,22 @@ def death_scene():
     print("You spawn back at the adventurers guild...")
     ad_guild()
 
+
 def outro_scene():
     print("'Ah", global_objs.player.name, "you've returned, tell me do you have the artifact?'\n"
-          "You nod your head and grab a small pouch from your backpack and hand it over to duke John\n"
-          "He eagerly accepts the pouch and opens it up immediately\n"
-          "'I've never told you what this artifact does right?'\n"
-          "You shake your head\n"
-          "'Right, maybe it's time to let you in on a little secret, this artifact is something that I will be using as a Phylactery\n"
-          "Now I know what you're thinking 'what is a Phylactery?', well the answer is quite simple.\n"
-          "They are used to bind something with magical qualities to something of the physical realm\n"
-          "The dwarves were always known for their craftsmanship and ability to make things that could last for centuries\n"
-          "To put it bluntly, I needed something that I could use to bind my soul into and ascend into lichdom, and you my dear", global_objs.player.name,"have provided me with just that\n"
-          "Since you have been so valuable to me in this life, I want to offer you some advice. Leave the kingdom, Things are gonna be a bit different around here\n"
-          "I have decided that I want to rule for a bit longer then the meager amount of years that me predecessors could and I don't want you to get involved in all this mess that comes with my ascension\n"
-          "So, farewell my dearest adventurer, may we meet again in this life or the next!'\n"
-          "You decide it's best to heed his advice for now and leave\n"
-          "But you decide that there is no way that the Magisterium won't hear of this, a new lich rising could be disastrous for everyone who lives here and the next two kingdoms over")
+                                          "You nod your head and grab a small pouch from your backpack and hand it over to duke John\n"
+                                          "He eagerly accepts the pouch and opens it up immediately\n"
+                                          "'I've never told you what this artifact does right?'\n"
+                                          "You shake your head\n"
+                                          "'Right, maybe it's time to let you in on a little secret, this artifact is something that I will be using as a Phylactery\n"
+                                          "Now I know what you're thinking 'what is a Phylactery?', well the answer is quite simple.\n"
+                                          "They are used to bind something with magical qualities to something of the physical realm\n"
+                                          "The dwarves were always known for their craftsmanship and ability to make things that could last for centuries\n"
+                                          "To put it bluntly, I needed something that I could use to bind my soul into and ascend into lichdom, and you my dear",
+          global_objs.player.name, "have provided me with just that\n"
+                                   "Since you have been so valuable to me in this life, I want to offer you some advice. Leave the kingdom, Things are gonna be a bit different around here\n"
+                                   "I have decided that I want to rule for a bit longer then the meager amount of years that me predecessors could and I don't want you to get involved in all this mess that comes with my ascension\n"
+                                   "So, farewell my dearest adventurer, may we meet again in this life or the next!'\n"
+                                   "You decide it's best to heed his advice for now and leave\n"
+                                   "But you decide that there is no way that the Magisterium won't hear of this, a new lich rising could be disastrous for everyone who lives here and the next two kingdoms over")
     exit()

@@ -5,3 +5,4 @@ player = None
 
 ragdoll = mobs.Mob("Ragdoll", 5, "Padded bat", 0, False)
 lost_dwarf = mobs.Mob("Lost Dwarf", 10, "Heavy Axe", 3, False)
+highwaymen = mobs.Mob("Highwaymen", 12, "Knives", 3, False)

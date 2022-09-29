@@ -20,6 +20,9 @@ class Mob:
             attacker.attack_damage = 2
         elif "Warhammer" in attacker.inventory:
             attacker.attack_damage = 3
+        else:
+            print("It's not too smart to go in with just your fists...")
+            attacker.attack_damage = 1
         while fighting:
             print("You are in combat, you can either attack or try to run away.")
             print("1. Attack")
