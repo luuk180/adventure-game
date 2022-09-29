@@ -10,7 +10,7 @@ class Mob:
         self.weapon = weapon
         self.attack_damage = attack_damage
 
-    def fight(self):
+    def fight(self, attacker: player.Player):
         fighting = True
         while fighting:
             print("You are in combat, you can either attack or try to run away.")
@@ -19,9 +19,9 @@ class Mob:
             choice = input()
             if choice == "1":
                 print("You chose to attack!")
-                self.health = self.health - player.attack_damage
+                self.health = self.health - attacker.attack_damage
                 print(self.name, "attacks you and does", self.attack_damage, "damage!")
-                if player.health <= 0:
+                if attacker.health <= 0:
                     print("You died!")
                     fighting = False
             elif choice == "2":
