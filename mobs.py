@@ -1,6 +1,5 @@
 import random
 
-import global_objs
 import player
 import location_scripts
 
@@ -20,7 +19,7 @@ class Mob:
             attacker.attack_damage = 3
         elif "One handed axe" in attacker.inventory:
             attacker.attack_damage = 2
-        elif "Warhammer" in attacker.inventory:
+        elif "War Hammer" in attacker.inventory:
             attacker.attack_damage = 3
         else:
             print("It's not too smart to go in with just your fists...")
@@ -39,7 +38,7 @@ class Mob:
                 print(self.name, "attacks you and does", self.attack_damage, "damage!")
                 if attacker.health <= 0:
                     fighting = False
-                    attacker.death()
+                    attacker.death(starting_health)
                 if self.health <= 0:
                     self.dead = True
 
@@ -53,7 +52,7 @@ class Mob:
                     print(self.name, "attacks you and does", self.attack_damage, "damage!")
                     if attacker.health <= 0:
                         fighting = False
-                        attacker.death()
+                        attacker.death(starting_health)
             if attacker.health <= 0:
                 location_scripts.death_scene()
         else:

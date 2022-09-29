@@ -195,7 +195,7 @@ def blacksmith():
           "You follow Hamon inside and he shows you his wares\n"
           "1. Longsword\n"
           "2. One handed axe\n"
-          "3. Warhammer")
+          "3. War Hammer")
     uinput = ''
     while uinput not in wep_choice:
         print("Please input 1, 2 or 3")
@@ -205,7 +205,7 @@ def blacksmith():
         elif uinput == '2':
             global_objs.player.inventory.append("1hAxe")
         elif uinput == '3':
-            global_objs.player.inventory.append("Warhammer")
+            global_objs.player.inventory.append("War Hammer")
         else:
             print("Please enter a valid option\n")
             continue
