@@ -17,6 +17,7 @@ def intro_scene():
         print("Please input 1")
         uinput = input()
         if uinput == '1':
+            print("You turn around an walk towards the main hall\n")
             duke_hold()
         else:
             print("Please enter a valid option\n")
@@ -36,8 +37,10 @@ def mountain_base():
         print("Please input 1 or 2")
         uinput = input()
         if uinput == '1':
+            print("You move to the all so familiar adventurer guild\n")
             ad_guild()
         elif uinput == '2':
+            print("You walk past the city gates and into the town square of Castanor\n")
             town_square()
         else:
             print("Please enter a valid option\n")
@@ -54,8 +57,10 @@ def ad_guild():
         print("Please input 1 or 2")
         uinput = input()
         if uinput == '1':
+            print("You approach Arlow\n")
             trade_talk()
         elif uinput == '2':
+            print("You walk out of the door towards the mountain base\n")
             mountain_base()
         else:
             print("Please enter a valid option\n")
@@ -75,14 +80,22 @@ def town_square():
         print("Please input 1, 2, 3, 4 or 5")
         uinput = input()
         if uinput == '1':
+            print("You walk past all the stall and climb up the stairs that lead to the duke's hold\n")
             duke_hold()
         elif uinput == '2':
+            print("You decide to go and see the local blacksmith\n")
             blacksmith()
         elif uinput == '3':
+            print("Maybe this old man can give you some advice\n")
             talk_elder()
         elif uinput == '4':
+            print("You exit the town and walk down the path to the base of the mountain\n")
             mountain_base()
         elif uinput == '5':
+            print("You start moving towards the cave entrance\n"
+                  "As you walk through a quite shallow valley you hear some murmuring coming from the top\n"
+                  "The whispers came from a small group of highwaymen!\n"
+                  "Prepare for combat!\n")
             # combat met highwaymen die je nadat je ze veralge hebt altijd naar cave_entrance() laat gaan
         else:
             print("Please enter a valid option\n")
@@ -123,6 +136,7 @@ def keep_study():
             print("Press 1 to return to the main hall")
             uinput = input()
             if uinput == '1':
+                print("You exit the study through the door back into the hold\n")
                 duke_hold()
             else:
                 print("Please enter a valid option\n")
@@ -150,7 +164,7 @@ def blacksmith():
         elif uinput == '3':
             global_objs.player.inventory.append("Warhammer")
         else:
-            print("Please enter a valid option")
+            print("Please enter a valid option\n")
             continue
     print("'Ah, excellent choice, I am very proud of that one\n"
           "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
@@ -164,7 +178,7 @@ def cave_entrance():
     directions  = ["1", "2", "3", "4"]
     print("You approach the cave entrance that will lead to the abandoned dwarven hold\n"
           "Once you have entered the cave you see a bridge made from cut stone that leads to what you assume will be the gate to the hold\n"
-          "Below the bridge you see a small river flowing down the mountain, you asses that you should be able to descend to the river and follow it if you so chose\n"
+          "There is a steep wall that leads to a lower area of the cave where you can hear what you assume to be a river, you asses that you can scale down the wall if you have some rope\n"
           "1. Move along the bridge to the gate\n"
           "2. Descend down the wall of the mountain and follow the river\n"
           "3. Return to Castanor\n"
@@ -176,11 +190,18 @@ def cave_entrance():
         if uinput == '1':
             bridge_hold()
         elif uinput == '2':
-            print("You scale down the wall to the river\n")
-            cave_river()
+            if "Rope" in global_objs.player.inventory:
+                print("You descend slowly down to the river")
+                cave_river()
+            else:
+                print(
+                    "You stare down into the darkness, going down this wall without anything to slow yourself down would be suicide")
+                cave_entrance()
         elif uinput == '3':
+            print("You decide to head back to the town")
             town_square()
         elif uinput == '4':
+            print("You decide to return to the base of the mountain")
             mountain_base()
         else:
             print("Please enter a valid option\n")
@@ -188,23 +209,21 @@ def cave_entrance():
 
 
 def cave_river():
-    directions = ["1", "2", "3"]
+    directions = ["1", "2"]
     print("You are now standing at the river bank\n"
           "From here you vaguely see a lake that the river flows to, you also see a feint blue light emanating from the lake\n"
           "1. Move towards the lake\n"
-          "2. Return to the cave entrance\n"
-          "3. Use some of the rope you have to climb up to the bridge that connects the cave entrance to the hold")
+          "2. Return to the cave entrance")
     uinput = ""
     while uinput not in directions:
-        print("Please input 1, 2, or 3")
+        print("Please input 1 or 2")
         uinput = input()
         if uinput == '1':
+            print("You walk along the river towards the source of light\n")
             cave_lake()
         elif uinput == '2':
-            print("You climb up the wall to the cave entrance\n")
+            print("You climb up the wall to the cave entrance using the rope that you also used for you descent\n")
             cave_entrance()
-        elif uinput == '3':
-            hold_bridge()
         else:
             print("Please enter a valid option\n")
             continue
@@ -223,15 +242,17 @@ def cave_lake():
             print("Please input 1 or 2")
             uinput = input()
             if uinput == '1':
+                print("You leave the lake and return to where you went down to the river initially\n")
                 cave_river()
             elif uinput == '2':
+                print("You pick most of the mushrooms and place them in you backpack\n")
                 global_objs.player.inventory.append("Mushrooms")
                 cave_lake()
             else:
                 print("Please enter a valid option\n")
                 continue
     else:
-        print("You return to the cave lake, where you collected the mushrooms earlier\n"
+        print("You are standing on the furthest edge of the river bank, where you collected the mushrooms earlier\n"
               "There doesn't seem to be anything of interest here left\n"
               "1. Walk back along the river")
         uinput = ''
@@ -247,49 +268,47 @@ def cave_lake():
 
 def bridge_hold():
     if not global_objs.bridge_open_door:
-        directions = ["1", "2", "3"]
+        directions = ["1", "2"]
         print("You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
             "The gate must be at least 25 meters tall and is looming over you quite menacingly\n"
             "Opening this thing with just your own strength will be impossible, but age appears to have taken a toll on this entrance and it seems very plausible that you can blast open the door with a controlled explosion\n"
             "1. Proceed into the hold\n"
-            "2. Walk back to the cave's entrance over the bridge\n"
-            "3. Climb down to the river that flows beneath the bridge")
+            "2. Walk back to the cave's entrance over the bridge")
         uinput = ""
         while uinput not in directions:
-            print("Please input 1, 2, or 3")
+            print("Please input 1 or 2")
             uinput = input()
             if uinput == '1':
                 if "Explosives" in global_objs.player.inventory:
-                    print("You blow a house sized hole into the door and proceed into the abandoned dwarven hold")
+                    print("You blow a house sized hole into the door and proceed into the abandoned dwarven hold\n")
+                    global_objs.bridge_open_door = True
                     mountain_hold()
                 else:
-                    print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open")
+                    print("The door won't budge a bit, it seems you will need something with a lot of force to convince the door to open\n")
                     bridge_hold()
             elif uinput == '2':
+                print("You walk over the bridge back to the entrace of the cave\n")
                 cave_entrance()
-            elif uinput == '3':
-                cave_river()
             else:
                 print("Please enter a valid option\n")
                 continue
     else:
-        directions = ["1", "2", "3"]
+        directions = ["1", "2"]
         print(
             "You walk over the bridge towards the gate of the dwarven hold, as you walk the gate appears to be getting larger and larger until you are standing in front of it\n"
-            "The hole in the gate is still there\n"
+            "The large hole in the gate is still there, would be weird if it were repaired so sudden\n"
             "1. Proceed into the hold\n"
-            "2. Walk back to the cave's entrance over the bridge\n"
-            "3. Climb down to the river that flows beneath the bridge")
+            "2. Walk back to the cave's entrance over the bridge")
         uinput = ""
         while uinput not in directions:
-            print("Please input 1, 2, or 3")
+            print("Please input 1 or 2")
             uinput = input()
             if uinput == '1':
+                print("You walk through the destruction that you have cause into the hold\n")
                 mountain_hold()
             elif uinput == '2':
+                print("You walk over the bridge back to the entrace of the cave\n")
                 cave_entrance()
-            elif uinput == '3':
-                cave_river()
             else:
                 print("Please enter a valid option\n")
                 continue
@@ -302,6 +321,7 @@ def mountain_hold():
           "Prepare for combat!")
     # bing bang boom you beat up the gobbos
     print("After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
+          "It does look like in their hurry the goblins left some things lying around"
           "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
     # puzzle that you do to access the platform kajigger and hands out skeleton key
     print("Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
@@ -312,8 +332,10 @@ def mountain_hold():
         print("Please input 1 or 2")
         uinput = input()
         if uinput == '1':
+            print("You use the lifting platform and ascend to the top of the hold\n")
             summit_temple()
         elif uinput== '2':
+            print("You exit the hold through the battered gate\n")
             bridge_hold()
         else:
             print("Please enter a valid option\n")
