@@ -196,13 +196,20 @@ def blacksmith():
           "Oh before I forget, I've heard that there could be goblins somewhere in the cave\n"
           "They are a very crafty race and I would really like to hold and use some if their contraptions. If you can bring me any I'll give you something in return from my collection\n"
           "Best of luck out there!\n")
-    # dummy_train() dit moet een combat function zijn denk ik? maar weet niet hoe je het wil implementen dus doe het maar ff zo 'dummy_train()' moet je ook wel terug plaatsen in de town_square()
+
+    if not global_objs.ragdoll.dead:
+        if global_objs.ragdoll.fight(global_objs.player) == "return":
+            blacksmith()
+    town_square()
 
 
 def cave_entrance():
     directions  = ["1", "2", "3", "4"]
     print("You approach the cave entrance that will lead to the abandoned dwarven hold\n"
-          "Once you have entered the cave you see a bridge made from cut stone that leads to what you assume will be the gate to the hold\n"
+          "You run into a dwarf that starts attacking you.")
+    global_objs.lost_dwarf.fight(global_objs.player)
+
+    print("Once you have entered the cave you see a bridge made from cut stone that leads to what you assume will be the gate to the hold\n"
           "There is a steep wall that leads to a lower area of the cave where you can hear what you assume to be a river, you asses that you can scale down the wall if you have some rope\n"
           "1. Move along the bridge to the gate\n"
           "2. Descend down the wall of the mountain and follow the river\n"
@@ -443,6 +450,12 @@ def talk_elder():
         else:
             print("Please enter a valid option")
             continue
+
+
+def death_scene():
+    print("No health left...")
+    print("You spawn back at the adventurers guild...")
+    ad_guild()
 
 def outro_scene():
     print("'Ah", global_objs.player.name, "you've returned, tell me do you have the artifact?'\n"
