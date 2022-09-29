@@ -100,8 +100,10 @@ def town_square():
                       "The whispers came from a small group of highwaymen!\n"
                       "Prepare for combat!\n")
                 global_objs.highwaymen.fight(global_objs.player)
+                cave_entrance()
             else:
                 print("You exit the town and walk to the cave entrance")
+                cave_entrance()
         else:
             print("Please enter a valid option\n")
             continue
