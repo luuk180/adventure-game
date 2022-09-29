@@ -404,29 +404,34 @@ def summit_temple():
         "Before you have more time to inspect your surrounding you see some movement in the corner of your eye however\n"
         "It appears that a bunch of bigger and more ruthless goblins, hobgoblins are squatting in the temple of the dwarves\n"
         "Prepare for combat!")
-    # bing bang boom you get beaten up by hobgobs, return to town and get some upgrades or blessing? idk yet
+    if not global_objs.hobgoblins.dead:
+        global_objs.hobgoblins.fight(global_objs.player)
     print(
         "These hobgoblins are a lot stronger then their smaller goblin counterpart, but having finally defeated them all you can finally explore the rest of the room\n"
         "Eventually you stumble upon a chest that has some markings on the top, you recognize these markings as the ones that Loremaster Luchika has told you about, this should be the chest that contain the artifact you have been tasked to retrieve")
-    # need skeleton key to open chest
-    print("The lock pops open after a satisfying click and drops to the ground\n"
-          "You open the chest and there lies the artifact you have been looking for\n"
-          "It's a silver necklace attached to a weird stone that changes colour depending on the angle that you look at\n"
-          "You can now return to duke John and receive your reward\n"
-          "You also find that you can scale down the mountain side with some rope so that you can get yourself very close to the town square\n"
-          "1. Go down the mountainside and return to the town square\n"
-          "2. Go down the elevator to the dwarven hold")
-    uinput = ''
-    while uinput not in directions:
-        print("please input 1 or 2")
-        uinput = input()
-        if uinput == '1':
-            town_square()
-        elif uinput == '2':
-            mountain_hold()
-        else:
-            print("Please enter a valid option\n")
-            continue
+    if "Skeleton Key" in global_objs.player.inventory:
+        print("The lock pops open after a satisfying click and drops to the ground\n"
+              "You open the chest and there lies the artifact you have been looking for\n"
+              "It's a silver necklace attached to a weird stone that changes colour depending on the angle that you look at\n"
+              "You can now return to duke John and receive your reward\n"
+              "You also find that you can scale down the mountain side with some rope so that you can get yourself very close to the town square\n"
+              "1. Go down the mountainside and return to the town square\n"
+              "2. Go down the elevator to the dwarven hold")
+    else:
+        print("You can't yet open the chest...")
+        print("You need to look for the Skeleton Key")
+
+        uinput = ''
+        while uinput not in directions:
+            print("please input 1 or 2")
+            uinput = input()
+            if uinput == '1':
+                town_square()
+            elif uinput == '2':
+                mountain_hold()
+            else:
+                print("Please enter a valid option\n")
+                continue
 
 
 def trade_talk():

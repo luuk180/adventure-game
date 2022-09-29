@@ -1,5 +1,6 @@
 import random
 
+import global_objs
 import player
 import location_scripts
 
@@ -14,6 +15,7 @@ class Mob:
 
     def fight(self, attacker: player.Player):
         fighting = True
+        starting_health = attacker.health
         if "Longsword" in attacker.inventory:
             attacker.attack_damage = 3
         elif "One handed axe" in attacker.inventory:
@@ -23,6 +25,8 @@ class Mob:
         else:
             print("It's not too smart to go in with just your fists...")
             attacker.attack_damage = 1
+        if "Blessing of the Goblin God" in attacker.inventory:
+            attacker.attack_damage += 3
         while fighting:
             print("You are in combat, you can either attack or try to run away.")
             print("1. Attack")
@@ -34,8 +38,8 @@ class Mob:
                 print("You do", attacker.attack_damage, "damage!")
                 print(self.name, "attacks you and does", self.attack_damage, "damage!")
                 if attacker.health <= 0:
-                    print("You died!")
                     fighting = False
+                    attacker.death()
                 if self.health <= 0:
                     self.dead = True
 
@@ -47,6 +51,9 @@ class Mob:
                 else:
                     print("You failed to run away!")
                     print(self.name, "attacks you and does", self.attack_damage, "damage!")
+                    if attacker.health <= 0:
+                        fighting = False
+                        attacker.death()
             if attacker.health <= 0:
                 location_scripts.death_scene()
         else:
