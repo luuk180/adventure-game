@@ -4,10 +4,11 @@ import player
 
 
 class Mob:
-    def __init__(self, name, health, weapon):
+    def __init__(self, name, health, weapon, attack_damage):
         self.name = name
         self.health = health
         self.weapon = weapon
+        self.attack_damage = attack_damage
 
     def fight(self):
         fighting = True
@@ -19,6 +20,10 @@ class Mob:
             if choice == "1":
                 print("You chose to attack!")
                 self.health = self.health - player.attack_damage
+                print(self.name, "attacks you and does", self.attack_damage, "damage!")
+                if player.health <= 0:
+                    print("You died!")
+                    fighting = False
             elif choice == "2":
                 rng = random.random()
                 if rng > 0.5:
