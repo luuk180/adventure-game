@@ -157,14 +157,21 @@ def duke_hold():
 def keep_study():
     directions = ["1"]
     print("You walk into Loremaster Luchika's study \n"
-          "The first thing you note is that all the walls are completely lined with bookshelves wich are just bursting at the seems\n"
-          "It almost seems that beside all the books and scrolls the is empty so you say shout:'Hello? Luchika are you in here?'\n"
+          "The first thing you note is that all the walls are completely lined with bookshelves wich are just "
+          "bursting at the seems\n "
+          "It almost seems that beside all the books and scrolls the is empty so you say shout:'Hello? Luchika are "
+          "you in here?'\n "
           "You hear a loud thud behind some books followed by a 'Yes, I'm here. I'll be out in a second' \n"
           "'Greetings! You must be", global_objs.player.name, "Duke John has told me about your arrival\n"
-                                                              "I suppose you want to learn some more about the Dwarven hold? Here I'll let you in some of their secrets\n"
-    # here he tells you about the puzzle and some other things that are irrelevant
-                                                              "You interrupt him now since he's been rambling on about more and more irrelevant stuff \n"
-                                                              "'Oh sorry I tend to do that sometimes, I'm just so fascinated by their entire existence. Well anyways you best be off now best of luck!'\n")
+                                                              "I suppose you want to learn some more about the "
+                                                              "Dwarven hold? Here I'll let you in some of their "
+                                                              "secrets\n "
+          # here he tells you about the puzzle and some other things that are irrelevant
+                                                              "You interrupt him now since he's been rambling on "
+                                                              "about more and more irrelevant stuff \n "
+                                                              "'Oh sorry I tend to do that sometimes, I'm just so "
+                                                              "fascinated by their entire existence. Well anyways you "
+                                                              "best be off now best of luck!'\n")
     uinput = ""
     while uinput not in directions:
         print("Press 1 to return to the main hall")
@@ -182,7 +189,9 @@ def blacksmith():
     print("As you head to the smithy you are greeted by Hamon the blacksmith\n"
           "'Hail, I've yet to see your face around here, you must be a traveler'\n"
           "You explain the story and hand Hamon the permit given to you by Duke John\n"
-          "'Ah I see, well as per this permit I will allow you choice of weapon so tell me what would you'd like. Just one restriction I can't go and make something custom for you right now because the permit says that it would take too long, but follow me I'll show you my stock\n"
+          "'Ah I see, well as per this permit I will allow you choice of weapon so tell me what would you'd like. "
+          "Just one restriction I can't go and make something custom for you right now because the permit says that "
+          "it would take too long, but follow me I'll show you my stock\n "
           "You follow Hamon inside and he shows you his wares\n"
           "1. Longsword\n"
           "2. One handed axe\n"
@@ -358,16 +367,17 @@ def bridge_hold():
 
 def mountain_hold():
     directions = ["1", "2"]
-    print(
-        "You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the hold\n"
-        "It appears though that this hold is not as abandoned as you first thought! Goblins have taken up residence in the vacant houses and the explosions have not only awakened them but also greatly angered them\n"
-        "Prepare for combat!")
-    # bing bang boom you beat up the gobbos
-    print(
-        "After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
-        "It does look like in their hurry the goblins left some things lying around"
-        "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
-    # puzzle that you do to access the platform kajigger and hands out skeleton key
+    if not global_objs.goblin_boss.dead:
+        print(
+            "You are now standing in the middle of the abandoned hold, it appears this used to be a small village with a small houses scattered around the main square of the hold\n"
+            "It appears though that this hold is not as abandoned as you first thought! Goblins have taken up residence in the vacant houses and the explosions have not only awakened them but also greatly angered them\n"
+            "Prepare for combat!")
+        global_objs.goblin_boss.fight(global_objs.player)
+        print(
+            "After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
+            "It does look like in their hurry the goblins left some things lying around"
+            "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
+        # puzzle that you do to access the platform kajigger and hands out skeleton key
     print(
         "Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
         "1. Go up the elevator contraption to summit temple\n"
