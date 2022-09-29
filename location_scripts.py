@@ -103,21 +103,46 @@ def town_square():
 
 
 def duke_hold():
-    directions = ["1", "2"]
-    print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
-          "1. Exit the hold and proceed to the town square\n"
-          "2. Go the Loremaster Luchika's study\n")
-    uinput = ""
-    while uinput not in directions:
-        print("Please input 1 or 2")
-        uinput = input()
-        if uinput == '1':
-            town_square()
-        elif uinput == '2':
-            keep_study()
-        else:
-            print("Please enter a valid option\n")
-            continue
+    if "Artifact" in global_objs.player.inventory:
+        directions = ["1", "2", "3"]
+        print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
+              "1. Exit the hold and proceed to the town square\n"
+              "2. Go the Loremaster Luchika's study\n"
+              "3. Present the artifact to duke John")
+        uinput = ''
+        while uinput not in directions:
+            print("Please input 1, 2 or 3")
+            uinput = input()
+            if uinput == '1':
+                print("You leave the dukes hold and walk down the stairs to the town square")
+                town_square()
+            elif uinput == '2':
+                print("You open the door to the loremaster's study")
+                keep_study()
+            elif uinput == '3':
+                print("You approach the duke sitting in his study")
+                outro_scene()
+            else:
+                print("Please enter a valid option\n")
+                continue
+    else:
+        directions = ["1", "2"]
+        print("You are currently standing in the main hall of Duke John of Castonath, from here you can either go to the town's square or go to the study of Loremaster Luchika\n"
+              "1. Exit the hold and proceed to the town square\n"
+              "2. Go the Loremaster Luchika's study\n")
+        uinput = ""
+        while uinput not in directions:
+            print("Please input 1 or 2")
+            uinput = input()
+            if uinput == '1':
+                print("You leave the dukes hold and walk down the stairs to the town square")
+                town_square()
+            elif uinput == '2':
+                print("You open the door to the loremaster's study")
+                keep_study()
+            else:
+                print("Please enter a valid option\n")
+                continue
 
 
 def keep_study():
@@ -418,3 +443,21 @@ def talk_elder():
         else:
             print("Please enter a valid option")
             continue
+
+def outro_scene():
+    print("'Ah", global_objs.player.name, "you've returned, tell me do you have the artifact?'\n"
+          "You nod your head and grab a small pouch from your backpack and hand it over to duke John\n"
+          "He eagerly accepts the pouch and opens it up immediately\n"
+          "'I've never told you what this artifact does right?'\n"
+          "You shake your head\n"
+          "'Right, maybe it's time to let you in on a little secret, this artifact is something that I will be using as a Phylactery\n"
+          "Now I know what you're thinking 'what is a Phylactery?', well the answer is quite simple.\n"
+          "They are used to bind something with magical qualities to something of the physical realm\n"
+          "The dwarves were always known for their craftsmanship and ability to make things that could last for centuries\n"
+          "To put it bluntly, I needed something that I could use to bind my soul into and ascend into lichdom, and you my dear", global_objs.player.name,"have provided me with just that\n"
+          "Since you have been so valuable to me in this life, I want to offer you some advice. Leave the kingdom, Things are gonna be a bit different around here\n"
+          "I have decided that I want to rule for a bit longer then the meager amount of years that me predecessors could and I don't want you to get involved in all this mess that comes with my ascension\n"
+          "So, farewell my dearest adventurer, may we meet again in this life or the next!'\n"
+          "You decide it's best to heed his advice for now and leave\n"
+          "But you decide that there is no way that the Magisterium won't hear of this, a new lich rising could be disastrous for everyone who lives here and the next two kingdoms over")
+    exit()
