@@ -14,9 +14,6 @@ def init(name):
 def run_game():
     intro()
 
-    global_objs.ragdoll.fight(global_objs.player)
-    global_objs.goblin_boss.fight(global_objs.player)
-
     location_scripts.intro_scene()
 
 
