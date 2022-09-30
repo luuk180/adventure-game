@@ -516,12 +516,6 @@ def talk_elder():
             continue
 
 
-def death_scene():
-    print("No health left...")
-    print("You spawn back at the adventurers guild...")
-    ad_guild()
-
-
 def outro_scene():
     print("'Ah", global_objs.player.name, "you've returned, tell me do you have the artifact?'\n"
                                           "You nod your head and grab a small pouch from your backpack and hand it over to duke John\n"

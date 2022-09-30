@@ -14,14 +14,16 @@ def init(name):
 def run_game():
     intro()
 
+    global_objs.ragdoll.fight(global_objs.player)
+    global_objs.goblin_boss.fight(global_objs.player)
+
     location_scripts.intro_scene()
 
 
 # Intro to the game
 def intro():
     print("Welcome weary adventurer to the hold of duke John")
-    print("Let's start with your name: ")
-    name = input()
+    name = input("Let's start with your name: ")
     init(name)
     print("Good luck, " + global_objs.player.name + ".")
 

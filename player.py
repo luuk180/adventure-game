@@ -13,9 +13,13 @@ class Player:
     def death(self, starting_health):
         print("You died!")
         if self.name == "Hobgoblins":
+            print("No health left...")
+            print("You spawn back at the adventurers guild...")
             self.health = starting_health
             global_objs.player.inventory.append("Blessing of the Goblin God")
             location_scripts.town_square()
         else:
+            print("No health left...")
+            print("You spawn back at the adventurers guild...")
             self.health = 20
             location_scripts.ad_guild()
