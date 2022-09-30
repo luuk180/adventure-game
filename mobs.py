@@ -26,6 +26,7 @@ class Mob:
             attacker.attack_damage = 1
         if "Blessing of the Goblin God" in attacker.inventory:
             attacker.attack_damage += 3
+        attacker.attack_damage += attacker.base_damage
         while fighting:
             print("You are in combat, you can either attack or try to run away.")
             print("1. Attack")

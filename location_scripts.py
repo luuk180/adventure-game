@@ -166,8 +166,15 @@ def keep_study():
                                                               "I suppose you want to learn some more about the "
                                                               "Dwarven hold? Here I'll let you in some of their "
                                                               "secrets\n ")
-    print("He gives you the choice to take a key ")
-    global_objs.player.inventory.append("Loremaster Luchika's Key")
+    if "Loremaster Luchika's Book" in global_objs.player.inventory:
+        print("He hands you one of his books...")
+        global_objs.player.inventory.append("Loremaster Luchika's Book")
+        choice = input("Do you read the book? ")
+        if choice == "yes":
+            print("Good choice! You learn how to do more damage.")
+            global_objs.player.base_damage += 2
+        elif choice == "no":
+            print("You passed on a good opportunity...")
     print("You interrupt him now since he's been rambling on "
           "about more and more irrelevant stuff \n "
           "'Oh sorry I tend to do that sometimes, I'm just so "
