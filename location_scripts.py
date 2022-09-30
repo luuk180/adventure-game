@@ -165,7 +165,11 @@ def keep_study():
           "'Greetings! You must be", global_objs.player.name, "Duke John has told me about your arrival\n"
                                                               "I suppose you want to learn some more about the "
                                                               "Dwarven hold? Here I'll let you in some of their "
-                                                              "secrets\n ")
+                                                              "secrets\n "
+                                                              "Dwarves are really religious when it comes to whether you are left or right handed\n"
+                                                              "So much so that everyone who is let handed is shunned by the local community and cast into exile\n"
+                                                              "Here I have something for you\n")
+    global_objs.player.inventory.append("Loremaster Luchika's Book")
     if "Loremaster Luchika's Book" in global_objs.player.inventory:
         print("He hands you one of his books...")
         global_objs.player.inventory.append("Loremaster Luchika's Book")
@@ -174,7 +178,7 @@ def keep_study():
             print("Good choice! You learn how to do more damage.")
             global_objs.player.base_damage += 2
         elif choice == "no":
-            print("You passed on a good opportunity...")
+            print("You passed up a good opportunity...")
     print("You interrupt him now since he's been rambling on "
           "about more and more irrelevant stuff \n "
           "'Oh sorry I tend to do that sometimes, I'm just so "
@@ -219,6 +223,7 @@ def blacksmith():
             continue
     print("'Ah, excellent choice, I am very proud of that one\n"
           "Before you leave make sure to test your weapon and skills on the dummy that's just to our left, best make sure you can handle it well\n"
+          "Whenever you are done with just swinging your weapon feel free to leave, I'd say it's quite unlikely you can keep going until it's nothing but firewood\n"
           "Oh before I forget, I've heard that there could be goblins somewhere in the cave\n"
           "They are a very crafty race and I would really like to hold and use some if their contraptions. If you can bring me any I'll give you something in return from my collection\n"
           "Best of luck out there!\n")
