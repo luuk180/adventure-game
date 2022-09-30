@@ -28,6 +28,12 @@ class Mob:
             attacker.attack_damage += 3
         attacker.attack_damage += attacker.base_damage
         while fighting:
+            if attacker.health <= 0:
+                fighting = False
+                attacker.death(starting_health)
+            if self.health <= 0:
+                self.dead = True
+                fighting = False
             print("You are in combat, you can either attack or try to run away.")
             print("1. Attack")
             print("2. Run away")
@@ -37,11 +43,6 @@ class Mob:
                 self.health = self.health - attacker.attack_damage
                 print("You do", attacker.attack_damage, "damage!")
                 print(self.name, "attacks you and does", self.attack_damage, "damage!")
-                if attacker.health <= 0:
-                    fighting = False
-                    attacker.death(starting_health)
-                if self.health <= 0:
-                    self.dead = True
 
             elif choice == "2":
                 rng = random.random()
@@ -51,10 +52,6 @@ class Mob:
                 else:
                     print("You failed to run away!")
                     print(self.name, "attacks you and does", self.attack_damage, "damage!")
-                    if attacker.health <= 0:
-                        fighting = False
-                        attacker.death(starting_health)
             if attacker.health <= 0:
                 location_scripts.death_scene()
-        else:
-            return
+        return
