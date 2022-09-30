@@ -6,7 +6,7 @@ import player
 
 
 def init(name):
-    global_objs.player = player.Player(name, 20, ["Hat"], 2)
+    global_objs.player = player.Player(name, 20, ["Hat"], 0, 2)
 
     return
 
