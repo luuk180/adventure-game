@@ -165,13 +165,14 @@ def keep_study():
           "'Greetings! You must be", global_objs.player.name, "Duke John has told me about your arrival\n"
                                                               "I suppose you want to learn some more about the "
                                                               "Dwarven hold? Here I'll let you in some of their "
-                                                              "secrets\n "
-          # here he tells you about the puzzle and some other things that are irrelevant
-                                                              "You interrupt him now since he's been rambling on "
-                                                              "about more and more irrelevant stuff \n "
-                                                              "'Oh sorry I tend to do that sometimes, I'm just so "
-                                                              "fascinated by their entire existence. Well anyways you "
-                                                              "best be off now best of luck!'\n")
+                                                              "secrets\n ")
+    print("He gives you the choice to take a key ")
+    global_objs.player.inventory.append("Loremaster Luchika's Key")
+    print("You interrupt him now since he's been rambling on "
+          "about more and more irrelevant stuff \n "
+          "'Oh sorry I tend to do that sometimes, I'm just so "
+          "fascinated by their entire existence. Well anyways you "
+          "best be off now best of luck!'\n")
     uinput = ""
     while uinput not in directions:
         print("Press 1 to return to the main hall")
@@ -259,7 +260,8 @@ def cave_entrance():
 def cave_river():
     directions = ["1", "2"]
     print("You are now standing at the river bank\n"
-          "From here you vaguely see a lake that the river flows to, you also see a feint blue light emanating from the lake\n"
+          "From here you vaguely see a lake that the river flows to, you also see a faint blue light emanating from "
+          "the lake\n "
           "1. Move towards the lake\n"
           "2. Return to the cave entrance")
     uinput = ""
@@ -375,9 +377,22 @@ def mountain_hold():
         global_objs.goblin_boss.fight(global_objs.player)
         print(
             "After defeating a few of the goblins the others flee the scene into small tunnels in the wall, chasing them would be pointless and impossible since the holes are nowhere near big enough for you to fit through\n"
-            "It does look like in their hurry the goblins left some things lying around"
-            "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain")
-        # puzzle that you do to access the platform kajigger and hands out skeleton key
+            "It does look like in their hurry the goblins left some things lying around")
+    if not global_objs.lift_on:
+        print(
+            "After some looking around you find something that looks like a lifting contraption that should take you to the temple that lies on the summit of this mountain"
+            "Do you pull the lever on the left or on the right?\n"
+            "1. The one on the left."
+            "2. The one on the right.")
+        uinput = ''
+        while uinput not in directions:
+            print("Please input 1 or 2")
+            uinput = input()
+            if uinput == "1":
+                print("A trapdoor under you opens and you fall...")
+                global_objs.player.death()
+            elif uinput == "2":
+                print("The lift starts to come to life...")
     print(
         "Now that you have the lifting platform working you can go to the temple or you can chose to return through the gate to the bridge\n"
         "1. Go up the elevator contraption to summit temple\n"
@@ -399,17 +414,17 @@ def mountain_hold():
 
 def summit_temple():
     directions = ["1", "2"]
-    print(
-        "The elevator has finished it's climb towards the top and you are now standing in the middle of a relatively small room compared to the rest of the hold\n"
-        "Before you have more time to inspect your surrounding you see some movement in the corner of your eye however\n"
-        "It appears that a bunch of bigger and more ruthless goblins, hobgoblins are squatting in the temple of the dwarves\n"
-        "Prepare for combat!")
     if not global_objs.hobgoblins.dead:
+        print(
+            "The elevator has finished it's climb towards the top and you are now standing in the middle of a relatively small room compared to the rest of the hold\n"
+            "Before you have more time to inspect your surrounding you see some movement in the corner of your eye however\n"
+            "It appears that a bunch of bigger and more ruthless goblins, hobgoblins are squatting in the temple of the dwarves\n"
+            "Prepare for combat!")
         global_objs.hobgoblins.fight(global_objs.player)
-    print(
-        "These hobgoblins are a lot stronger then their smaller goblin counterpart, but having finally defeated them all you can finally explore the rest of the room\n"
-        "Eventually you stumble upon a chest that has some markings on the top, you recognize these markings as the ones that Loremaster Luchika has told you about, this should be the chest that contain the artifact you have been tasked to retrieve")
-    if "Skeleton Key" in global_objs.player.inventory:
+        print(
+            "These hobgoblins are a lot stronger then their smaller goblin counterpart, but having finally defeated them all you can finally explore the rest of the room\n"
+            "Eventually you stumble upon a chest that has some markings on the top, you recognize these markings as the ones that Loremaster Luchika has told you about, this should be the chest that contain the artifact you have been tasked to retrieve")
+    if "Skeleton Key" in global_objs.player.inventory and not global_objs.skeleton_chest_opened:
         print("The lock pops open after a satisfying click and drops to the ground\n"
               "You open the chest and there lies the artifact you have been looking for\n"
               "It's a silver necklace attached to a weird stone that changes colour depending on the angle that you look at\n"
@@ -417,6 +432,9 @@ def summit_temple():
               "You also find that you can scale down the mountain side with some rope so that you can get yourself very close to the town square\n"
               "1. Go down the mountainside and return to the town square\n"
               "2. Go down the elevator to the dwarven hold")
+    elif "Skeleton Key" in global_objs.player.inventory and global_objs.skeleton_chest_opened:
+        print("Welcome back to the summit temple!"
+              "It's a little quiet here without the hobgoblins...")
     else:
         print("You can't yet open the chest...")
         print("You need to look for the Skeleton Key")
